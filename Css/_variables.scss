@@ -1,0 +1,44 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+$colorOne : rgb(33,33,33);
+$colorTwo : rgb(252,247,248);
+$colorThree : rgb(206,211,22);
+$colorFour : rgb(78,128,152);
+$colorFive : rgb(64,64,64);
+$colorText : $colorTwo;
+$borderRadiusFooter : 2em;
+$tailleImageFooter : 4em;
+$fontTextBase : "Titillium Web";
+
+/*MIXIN*/
+
+@mixin flexColumn()
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin baseLi()
+{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background-color: $colorFour;
+    //padding: 1em;
+    height: 3em;
+    align-items: center;
+    border-radius: .7em;
+    border: .1em solid $colorTwo;
+}
+
+@mixin baseShadow($attr: .1em .1em .1em, $colorShadow: black)
+{
+    box-shadow: $attr $colorShadow;
+}
+
+@mixin baseShadowText($attr : .1em .1em .1em, $colorShadow: black)
+{
+    text-shadow: $attr $colorShadow;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../Css/form.css">
+        <title>Formulaires de contacts</title>
+    </head>
+    <body>
+        <header></header>
+        <script type="text/javascript" src="../Scripts/Nav.js" haveHeader="true" nameHeader="Collaborons ensemble ! :)" inPage="true"></script>
+        <form action="/form" method="GET">
+            <fieldset class="Information">
+                <legend>INFORMATION</legend>
+                <div class="ChampForm">
+                    <label for="Nom">Nom de famille</label>
+                    <input type="text" name="Nom" id="Nom" required>
+                </div>
+                <div class="ChampForm">
+                    <label for="Prenom">Prenom</label>
+                    <input type="text" name="Nom" id="Prenom" required>
+                </div>
+                <div class="ChampForm">
+                    <label for="Entreprise">Entreprise/Etablissement (optionnelle)</label>
+                    <input type="text" name="Entreprise" id="Entreprise" >
+                </div>
+                <div class="ChampForm">
+                    <label for="email">Entrez votre email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>                
+            </fieldset>       
+            <fieldset class="CompExp">
+                <legend>Qui êtes vous ?</legend>
+                <aside class="sectionQEV">
+                    <div class="champTypeENT">
+                        <label for="Ecole">Ecole</label>
+                        <input type="radio" name="TypeEntreprise"id="Ecole" >
+                    </div>
+                    <div class="champTypeENT">
+                        <label for="Entreprise">Entreprise</label>
+                        <input type="radio" name="TypeEntreprise"id="Entreprise" >
+                    </div>
+                    <div class="champTypeENT">
+                        <label for="IndiviPersonelle">Individu Personnel</label>
+                        <input type="radio" name="TypeEntreprise"id="IndiviPersonelle" >
+                    </div>
+                    <div class="champTypeENT">
+                        <label for="autre">Autre</label>
+                        <input type="radio" name="TypeEntreprise"id="autre">
+                    </div>
+                </aside>
+                <label for="textZone">Dites m'en plus sur vous :)</label> 
+                <textarea name="textZone" id="textZone" placeholder="Parlez de votre entreprise/Posez vos questions" required></textarea>
+            </fieldset>
+            <fieldset class="Validation">
+                <legend>VALIDATION</legend>
+                <div class="ChampForm">
+                    <input type="submit" value="ENVOYEZ">
+                </div>
+            </fieldset>
+        </form>
+    </body>
+    <script type="text/javascript" src="../Scripts/formScript.js"></script>
+    <script type="text/javascript" src="../Scripts/script.js"></script>
+    <script type="text/javascript" src="Scripts/visible.js"></script>
+</html>

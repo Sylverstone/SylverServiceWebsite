@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+/*MIXIN*/
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, rgb(33, 33, 33), rgb(78, 128, 152), rgb(64, 64, 64));
+  background-size: 200% 200%;
+  animation: moveBG 10s infinite;
+}
+
+@keyframes moveBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+li {
+  list-style: none;
+}
+
+a {
+  color: rgb(252, 247, 248);
+  text-decoration: none;
+}
+
+h1, h2 {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.title {
+  font-size: 3em;
+  cursor: crosshair;
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+  font-weight: 400;
+  color: rgb(252, 247, 248);
+  background-color: rgb(33, 33, 33);
+  padding: 1.4em 1em;
+  justify-content: space-evenly;
+}
+
+.fixe-nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-ul {
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+  background-color: rgb(64, 64, 64);
+  justify-content: space-between;
+  gap: 0 10em;
+}
+.nav-ul li {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(78, 128, 152);
+  height: 3em;
+  align-items: center;
+  border-radius: 0.7em;
+  border: 0.1em solid rgb(252, 247, 248);
+  margin: 0.7em 0.7em;
+  grid-row: span 1;
+}
+
+li a, li {
+  font-size: 1.2em;
+  font-family: "Kanit", sans-serif;
+}
+
+.lien-nav {
+  display: flex;
+  justify-content: center;
+  position: relative; /*pour les pseudos-elements after et before*/
+}
+.lien-nav::after {
+  content: " ";
+  position: absolute;
+  border-bottom: 0.1em solid transparent;
+  border-radius: 1em;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  transition: width 800ms ease, border-color 500ms ease-out;
+}
+.lien-nav:hover::after {
+  left: 0;
+  border-color: rgb(33, 33, 33);
+  width: 100%;
+}
+
+li:hover .lien-nav::after {
+  left: 0;
+  border-color: rgb(33, 33, 33);
+  width: 100%;
+}
+
+* {
+  margin: 0;
+}
+
+form {
+  color: rgb(78, 128, 152);
+  align-self: center;
+  margin: 2em;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  font-family: "Titillium Web";
+  border: 0.1em solid black;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 1em 1em 1em black;
+}
+form label {
+  color: white;
+}
+form fieldset {
+  margin-bottom: 2em;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  font-family: "Titillium Web";
+  border: 0.1em solid black;
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+form fieldset:last-child {
+  margin-bottom: 1em;
+}
+form fieldset > * {
+  margin-bottom: 1em;
+}
+form fieldset legend {
+  color: rgb(252, 247, 248);
+  font-size: 1.4em;
+  text-shadow: 0.1em 0.1em 0.1em black;
+}
+form p {
+  color: rgb(252, 247, 248);
+  text-shadow: 0.1em 0.1em 0.1em black;
+  font-size: 2em;
+  margin-bottom: 0.1em;
+}
+
+.ChampForm {
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: rgba(25, 25, 25, 0.2);
+}
+
+.sectionQEV {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.sectionQEV .champTypeENT {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+}
+
+input, select {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 0.1em solid black;
+}
+
+input[type=submit] {
+  align-self: center;
+  padding: 1em;
+  margin-right: 0 !important;
+  transition: background-color 500ms ease;
+}
+input[type=submit]:hover {
+  background-color: rgba(0, 255, 0, 0);
+}
+
+input:not([type=submit]):not([type=checkbox]):not([type=radio]), select {
+  margin-left: 1em;
+}
+
+fieldset {
+  border: 0.1em solid black;
+}
+
+.Validation .ChampForm > * {
+  margin-right: 1em;
+}
+
+.Validation {
+  display: flex;
+  flex-direction: column;
+}
+.Validation > *:last-child {
+  align-self: center;
+}
+
+textarea {
+  border: 0.1em dashed darkblue;
+  aspect-ratio: 16/5;
+  border-radius: 0.5em;
+}
+
+input[type=radio], input[type=checkbox] {
+  cursor: pointer;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+input[type=radio] {
+  margin: 0 2em;
+  z-index: 16;
+}
+input[type=radio]::after {
+  cursor: pointer;
+  content: " ";
+  border: 0.1em solid black;
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  bottom: 0;
+  border-radius: 1em;
+  left: 0;
+  z-index: -1;
+}
+input[type=radio]::before {
+  align-self: center;
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  height: 0.7em;
+  width: 0.7em;
+  border-radius: 1em;
+  background-color: transparent;
+  z-index: -2;
+  left: 0.23em;
+  bottom: 0.2em;
+}
+input[type=radio]:checked::before {
+  background-color: black;
+}
+input[type=radio]:not(:checked)::before {
+  background-color: transparent;
+}
+
+input[type=checkbox]::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 3em;
+  height: 1.3em;
+  border: 0.1em solid black;
+  border-radius: 1em;
+}
+input[type=checkbox]::before {
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-image: url("../Images/unchecked.png");
+  mask-image: url("../Images/unchecked.png");
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 1.3em;
+  height: 1.3em;
+  border: 0.1em solid black;
+  border-radius: 1em;
+  left: 0;
+  background-color: black;
+  transition: left 200ms ease;
+}
+input[type=checkbox]:checked::before {
+  -webkit-mask-image: url("../Images/checked.png");
+  mask-image: url("../Images/checked.png");
+  left: 1.7em;
+}
+
+label[for=textZone] {
+  text-shadow: 0.1em 0.1em 0.1em black;
+}/*# sourceMappingURL=form.css.map */
