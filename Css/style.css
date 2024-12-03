@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yuji+Mai&display=swap");
 /*MIXIN*/
 body {
   display: flex;
@@ -57,10 +57,10 @@ h1, h2 {
   width: 100%;
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(11em, 1fr));
   background-color: rgb(64, 64, 64);
   justify-content: space-between;
-  gap: 0 10em;
+  gap: 0 12em;
 }
 .nav-ul li {
   display: flex;
@@ -107,7 +107,7 @@ li:hover .lien-nav::after {
   width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .title {
     font-size: 1.7em;
   }
@@ -160,7 +160,7 @@ footer div img {
   z-index: -1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   footer div a {
     padding: 1em !important;
     margin: 0.7em !important;
@@ -214,8 +214,11 @@ main h2 {
   border-radius: 0.7em;
   border: 0.1em solid rgb(252, 247, 248);
   color: rgb(252, 247, 248);
-  transition: font-size 1s ease;
+  transition: transform 1s ease;
   margin: 0.4em 1em !important;
+}
+.main-ul li:hover {
+  transform: scale(1.2);
 }
 .main-ul span {
   margin: 0 2em;
@@ -268,6 +271,9 @@ main h2 {
   .main-ul li {
     margin: 0.4em 0.1em;
   }
+  .main-ul li:hover {
+    transform: scale(1.05);
+  }
 }
 .main-techniques {
   margin-top: 1em;
@@ -317,11 +323,11 @@ main h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 40em;
+  max-width: 50em;
 }
 .langages div p {
   font-family: "Titillium Web";
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin: 1em;
 }
 
@@ -334,7 +340,7 @@ main h2 {
   opacity: 0.5 !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .langages aside img {
     width: 3em;
   }
@@ -347,11 +353,6 @@ main h2 {
   margin: 0;
 }
 
-.full-html {
-  width: 100%;
-  height: 100%;
-}
-
 .full-Body {
   width: 100%;
   height: 100%;
@@ -361,6 +362,8 @@ main h2 {
   height: 100%;
   display: grid;
   place-items: center;
+  margin-bottom: 2em !important;
+  filter: drop-shadow(0.1em 0.1em 0.1em black);
 }
 .full-Body p {
   font-size: 0.8em;
@@ -371,6 +374,7 @@ main h2 {
   border-radius: 1em;
   align-self: center;
   margin: 1em 1em;
+  white-space: pre-wrap;
 }
 
 body {
@@ -392,7 +396,7 @@ body {
     background-position: 0% 50%;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   p {
     font-size: 0.7em !important;
   }

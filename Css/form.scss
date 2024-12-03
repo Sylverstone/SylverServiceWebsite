@@ -76,6 +76,7 @@ form
     font-size: 1.1em;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding: 1em;
     border-radius: .5em;
@@ -93,8 +94,9 @@ form
     {
         display: flex;
         flex-direction: row;
-        align-items: baseline;
+        align-items: flex-end;
         justify-content: center;
+        margin: .5em 0em;
     }
 }
 
@@ -262,4 +264,50 @@ input[type="checkbox"]
 label[for="textZone"]
 {
     text-shadow: .1em .1em .1em black;
+}
+
+.grpMot
+{
+    white-space: nowrap;
+}
+
+@media (max-width: variables.$valeurPxPtitFormat)
+{
+    .title
+    {
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    form 
+    {
+        padding: .5em;
+        fieldset 
+        {
+            padding: .7em;
+            margin-bottom: 0.6em !important;
+            > *
+            {
+                margin-bottom: inherit;
+            }
+        }
+
+        label
+        {
+            font-size: .6em !important;
+        }
+
+        
+
+        .ChampForm
+        {
+            padding: .7em;
+            input:not([type="submit"]), select
+            {
+                padding:.3em;
+                width: 7em;
+                margin-left: .2em !important;
+            }
+        }
+    }
 }

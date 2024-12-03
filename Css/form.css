@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yuji+Mai&display=swap");
 /*MIXIN*/
 body {
   display: flex;
@@ -56,10 +56,10 @@ h1, h2 {
   width: 100%;
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(11em, 1fr));
   background-color: rgb(64, 64, 64);
   justify-content: space-between;
-  gap: 0 10em;
+  gap: 0 12em;
 }
 .nav-ul li {
   display: flex;
@@ -106,7 +106,7 @@ li:hover .lien-nav::after {
   width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .title {
     font-size: 1.7em;
   }
@@ -170,6 +170,7 @@ form p {
   font-size: 1.1em;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding: 1em;
   border-radius: 0.5em;
@@ -185,8 +186,9 @@ form p {
 .sectionQEV .champTypeENT {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: center;
+  margin: 0.5em 0em;
 }
 
 input, select {
@@ -307,4 +309,36 @@ input[type=checkbox]:checked::before {
 
 label[for=textZone] {
   text-shadow: 0.1em 0.1em 0.1em black;
+}
+
+.grpMot {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .title {
+    text-align: center;
+    line-height: 1.5;
+  }
+  form {
+    padding: 0.5em;
+  }
+  form fieldset {
+    padding: 0.7em;
+    margin-bottom: 0.6em !important;
+  }
+  form fieldset > * {
+    margin-bottom: inherit;
+  }
+  form label {
+    font-size: 0.6em !important;
+  }
+  form .ChampForm {
+    padding: 0.7em;
+  }
+  form .ChampForm input:not([type=submit]), form .ChampForm select {
+    padding: 0.3em;
+    width: 7em;
+    margin-left: 0.2em !important;
+  }
 }/*# sourceMappingURL=form.css.map */

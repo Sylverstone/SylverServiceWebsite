@@ -57,12 +57,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: 40em;
+        max-width: 50em;
 
         p
         {
             font-family: variables.$fontTextBase;
-            font-size: 1.2em;
+            font-size: 1.5em;
             margin: 1em;
         }
     }
@@ -78,7 +78,7 @@
     opacity: 0.5 !important;
 }
 
-@media (max-width: 600px) //mobile
+@media (max-width: variables.$valeurPxPtitFormat) //mobile
 {
     .langages
     {

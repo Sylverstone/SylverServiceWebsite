@@ -12,11 +12,7 @@
     margin: 0;
 }
 
-.full-html
-{
-    width: 100%;
-    height: 100%;
-}
+
 
 .full-Body
 {
@@ -30,6 +26,8 @@
         height: 100%;
         display: grid;
         place-items: center;
+        margin-bottom: 2em !important;
+        filter: drop-shadow(.1em .1em .1em black);
     }
     
     p
@@ -42,6 +40,7 @@
         border-radius: 1em;
         align-self: center;
         margin: 1em 1em;
+        white-space: pre-wrap;
     }
 
 }
@@ -62,7 +61,7 @@ body
     100% {background-position: 0% 50%;}
 }
 
-@media (max-width: 600px) //mobile
+@media (max-width: variables.$valeurPxPtitFormat) //mobile
 {
     p
     {

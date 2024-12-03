@@ -50,8 +50,13 @@ main h2
         display: block;
         @include variables.baseLi();
         color: variables.$colorText;
-        transition: font-size 1s ease;
+        transition: transform 1s ease;
         margin: 0.4em 1em !important;
+
+        &:hover
+        {
+            transform: scale(1.2);
+        }
         
     }
 
@@ -120,6 +125,11 @@ main h2
         li
         {
             margin: .4em .1em;
+
+            &:hover
+            {
+                transform: scale(1.05);
+            }
         }
     }
 }
