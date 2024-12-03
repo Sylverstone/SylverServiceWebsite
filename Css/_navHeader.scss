@@ -105,3 +105,16 @@ li:hover
         width: 100%;
     }
 }
+
+@media (max-width: 600px) //mobile
+{
+    .title
+    {
+        font-size: 1.7em;
+    }
+
+    li a, li
+    {
+        font-size: 1em;
+    }
+}

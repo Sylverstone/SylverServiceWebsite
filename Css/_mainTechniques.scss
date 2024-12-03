@@ -1,0 +1,99 @@
+@use 'variables';
+
+.main-techniques
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-self: center;
+
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 40em;
+}
+
+.langages
+{
+
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba($color: variables.$colorOne, $alpha: 0.3);
+    border-radius: 1em;
+    
+    aside
+    {
+        background-color: rgba($color: variables.$colorFive, $alpha: 0.2);
+        @include variables.baseShadow($colorShadow : variables.$colorOne);
+        
+        border-radius: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 20em;
+        margin: 1em;
+        img
+        {
+            width: 6em;
+            margin: 1em 1em;
+            height: auto;
+            filter: drop-shadow(.1em .1em .1em black);
+        }
+    }
+
+    div
+    {
+        background-color: rgba($color: variables.$colorOne, $alpha: 1.0);
+        @include variables.baseShadow($colorShadow : variables.$colorFive);
+        margin: 1em;
+        border-radius: 1em;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 40em;
+
+        p
+        {
+            font-family: variables.$fontTextBase;
+            font-size: 1.2em;
+            margin: 1em;
+        }
+    }
+}
+
+.logoSylverService
+{
+    margin: .6em;
+    position: absolute;
+    width: 4em;
+    height: auto;
+    right: 0;
+    opacity: 0.5 !important;
+}
+
+@media (max-width: 600px) //mobile
+{
+    .langages
+    {
+        aside 
+        {
+            img
+            {
+                width: 3em;
+            }
+        }
+
+    }
+
+    .logoSylverService
+    {
+        width: 2em;
+    }
+}
