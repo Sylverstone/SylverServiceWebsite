@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yuji+Mai&display=swap");
+/*MIXIN*/
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, rgb(33, 33, 33), rgb(78, 128, 152), rgb(64, 64, 64));
+  background-size: 200% 200%;
+  animation: moveBG 10s infinite;
+}
+
+@keyframes moveBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+img:not([alt=Home]) {
+  width: 30%;
+  height: auto;
+  border: 0.1em solid rgb(78, 128, 152);
+  border-radius: 200%;
+  box-shadow: 0.1em 0.1em 0.1em black;
+}
+
+img[alt=Home] {
+  position: absolute;
+  width: 5em;
+  height: auto;
+  top: 0;
+  right: 0;
+  filter: drop-shadow(0.1em 0.1em 0.1em black);
+}
+
+a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5em;
+  height: 5em;
+}
+
+figcaption {
+  font-size: 6em;
+  color: white;
+  font-family: "Yuji Mai", serif;
+}/*# sourceMappingURL=404.css.map */
