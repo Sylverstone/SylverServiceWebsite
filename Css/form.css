@@ -106,6 +106,14 @@ li:hover .lien-nav::after {
   width: 100%;
 }
 
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.7em;
+  }
+  li a, li {
+    font-size: 1em;
+  }
+}
 * {
   margin: 0;
 }

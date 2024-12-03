@@ -107,6 +107,241 @@ li:hover .lien-nav::after {
   width: 100%;
 }
 
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.7em;
+  }
+  li a, li {
+    font-size: 1em;
+  }
+}
+footer {
+  width: 90%;
+  margin-bottom: 0.4em;
+  border-radius: 2em;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-self: center;
+  z-index: 0;
+  box-shadow: 0.1em 0.1em 0.1em rgb(78, 128, 152);
+}
+footer div {
+  position: relative;
+}
+footer div a {
+  display: block;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.8em;
+  padding: 2em;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1em !important;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2em;
+  z-index: 1;
+}
+footer div:hover img {
+  opacity: 1;
+  transform: translateY(-4.3em);
+  filter: drop-shadow(1px 1px 2px rgb(0, 0, 0));
+}
+footer div img {
+  width: 4em;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 2em);
+  opacity: 0;
+  filter: drop-shadow(0.1em, 0.1em, 0.1em, black);
+  transition: opacity 400ms ease, transform 1s ease;
+  z-index: -1;
+}
+
+@media (max-width: 600px) {
+  footer div a {
+    padding: 1em !important;
+    margin: 0.7em !important;
+  }
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin-left: 2em;
+  margin-right: 2em;
+  flex-wrap: wrap;
+}
+main > * {
+  margin-top: 1em;
+}
+
+main h2 {
+  padding: 0.5em 2em;
+  background-color: rgb(252, 247, 248);
+  border-radius: 2em;
+}
+
+.fixe-asideFlottant {
+  position: sticky;
+  top: 10em;
+  right: 0;
+  margin-right: 2em;
+  background-color: rgb(64, 64, 64);
+  border-radius: 1em;
+  height: 25em;
+  box-shadow: 0.1em 0.1em 0.1em black;
+}
+
+.main-ul {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 1em;
+}
+.main-ul li {
+  display: block;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(78, 128, 152);
+  height: 3em;
+  align-items: center;
+  border-radius: 0.7em;
+  border: 0.1em solid rgb(252, 247, 248);
+  color: rgb(252, 247, 248);
+  transition: font-size 1s ease;
+  margin: 0.4em 1em !important;
+}
+.main-ul span {
+  margin: 0 2em;
+}
+
+.contenu {
+  width: 68em;
+}
+.contenu > * {
+  box-shadow: 0.1em 0.1em 0.1em black;
+}
+.contenu article {
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+  background-color: rgb(64, 64, 64);
+  padding: 1em;
+  border-radius: 1.6em;
+}
+.contenu article h2 {
+  font-size: 2em;
+  color: rgb(33, 33, 33);
+  margin-bottom: 1em;
+}
+.contenu article p {
+  font-size: 1.2em;
+  font-family: "Titillium Web", sans-serif;
+  color: rgb(252, 247, 248);
+}
+
+@media (max-width: 1766px) {
+  .fixe-asideFlottant {
+    top: 1em;
+    width: 100%;
+    margin-right: 0;
+    display: flex;
+    height: -moz-fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(64, 64, 64, 0.6);
+  }
+  .main-ul {
+    flex-direction: row !important;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .main-ul li {
+    margin: 0.4em 0.1em;
+  }
+}
+.main-techniques {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 40em;
+}
+
+.langages {
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: center;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(33, 33, 33, 0.3);
+  border-radius: 1em;
+}
+.langages aside {
+  background-color: rgba(64, 64, 64, 0.2);
+  box-shadow: 0.1em 0.1em 0.1em rgb(33, 33, 33);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 20em;
+  margin: 1em;
+}
+.langages aside img {
+  width: 6em;
+  margin: 1em 1em;
+  height: auto;
+  filter: drop-shadow(0.1em 0.1em 0.1em black);
+}
+.langages div {
+  background-color: #212121;
+  box-shadow: 0.1em 0.1em 0.1em rgb(64, 64, 64);
+  margin: 1em;
+  border-radius: 1em;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 40em;
+}
+.langages div p {
+  font-family: "Titillium Web";
+  font-size: 1.2em;
+  margin: 1em;
+}
+
+.logoSylverService {
+  margin: 0.6em;
+  position: absolute;
+  width: 4em;
+  height: auto;
+  right: 0;
+  opacity: 0.5 !important;
+}
+
+@media (max-width: 600px) {
+  .langages aside img {
+    width: 3em;
+  }
+  .logoSylverService {
+    width: 2em;
+  }
+}
 /*modification des elements par défaut*/
 * {
   margin: 0;
@@ -157,186 +392,11 @@ body {
     background-position: 0% 50%;
   }
 }
-main {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  margin-left: 2em;
-  margin-right: 2em;
-  flex-wrap: wrap;
-}
-main > * {
-  margin-top: 1em;
-}
-
-main h2 {
-  padding: 0.5em 2em;
-  background-color: rgb(252, 247, 248);
-  border-radius: 2em;
-}
-
-.fixe-asideFlottant {
-  position: sticky;
-  top: 10em;
-  right: 0;
-  margin-right: 2em;
-  background-color: rgb(64, 64, 64);
-  border-radius: 1em;
-  height: 25em;
-  box-shadow: 0.1em 0.1em 0.1em black;
-}
-
-@media (max-width: 1712px) {
-  .fixe-asideFlottant {
-    top: 1em;
-    width: 100%;
-    margin-right: 0;
-    display: flex;
-    height: -moz-fit-content;
-    height: fit-content;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(64, 64, 64, 0.6);
-  }
-  .main-ul {
-    flex-direction: row !important;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .main-ul li {
-    margin: 0.4em 0.1em;
-  }
-}
 @media (max-width: 600px) {
-  .title {
-    font-size: 1.7em;
+  p {
+    font-size: 0.7em !important;
   }
-  li a, li {
-    font-size: 1em;
+  h2 {
+    font-size: 1em !important;
   }
-}
-.main-ul {
-  padding: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 0 1em;
-  /*
-  span 
-  {
-      padding: 0 .5em;
-      position: relative;
-      &::after
-      {
-          content: " ";
-          position: absolute;
-          border: 1px solid transparent;
-          bottom: 0;
-          right:0;
-          height: 100%;
-          width: 0;
-          border-radius: 2em;
-          transition: border-color 500ms ease-out, width 1s ease;
-
-      }
-
-      &:hover::after
-      {
-          left: 0;
-          border-color: variables.$colorOne;
-          width: 100%;
-          height: 100%;
-
-      }
-
-
-  }
-  */
-}
-.main-ul li {
-  display: block;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  background-color: rgb(78, 128, 152);
-  height: 3em;
-  align-items: center;
-  border-radius: 0.7em;
-  border: 0.1em solid rgb(252, 247, 248);
-  color: rgb(252, 247, 248);
-  transition: font-size 1s ease;
-  margin: 0.4em 1em !important;
-}
-.main-ul span {
-  margin: 0 2em;
-}
-
-.contenu {
-  width: 68em;
-}
-.contenu > * {
-  box-shadow: 0.1em 0.1em 0.1em black;
-}
-.contenu article {
-  margin-bottom: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: self-start;
-  background-color: rgb(64, 64, 64);
-  padding: 1em;
-  border-radius: 1.6em;
-}
-.contenu article h2 {
-  font-size: 2em;
-  color: rgb(33, 33, 33);
-  margin-bottom: 1em;
-}
-.contenu article p {
-  font-size: 1.2em;
-  font-family: "Titillium Web", sans-serif;
-  color: rgb(252, 247, 248);
-}
-
-footer {
-  width: 90%;
-  margin-bottom: 0.4em;
-  border-radius: 2em;
-  background-color: black;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  align-self: center;
-  box-shadow: 0.1em 0.1em 0.1em rgb(78, 128, 152);
-}
-footer div {
-  position: relative;
-}
-footer div a {
-  display: block;
-  font-family: "Barlow", sans-serif;
-  font-size: 0.8em;
-  padding: 2em;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 1em !important;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 2em;
-}
-footer div:hover img {
-  opacity: 1;
-  transform: translateY(-4em);
-  filter: drop-shadow(1px 1px 2px rgb(0, 0, 0));
-}
-footer div img {
-  width: 4em;
-  height: auto;
-  position: absolute;
-  bottom: 0;
-  left: calc(50% - 2em);
-  opacity: 0;
-  filter: drop-shadow(0.1em, 0.1em, 0.1em, black);
-  transition: opacity 400ms ease, transform 1s ease;
 }/*# sourceMappingURL=style.css.map */
