@@ -19,9 +19,12 @@ AllElements.forEach(element =>
     if(element instanceof HTMLElement)
     {
         element.style.opacity = "0";
-        if(element.style.transition)
+        
+        const computedStyle = window.getComputedStyle(element).transition;
+        console.log(`${computedStyle} ease, opacity 1s ease`);
+        if(window.getComputedStyle(element) !== "all")
         {
-            element.style.transition += ", opacity 500ms ease";
+            element.style.transition = `${computedStyle} ease, opacity 1s ease`
         }
         else{
             element.style.transition = "opacity 500ms ease";
