@@ -38,7 +38,6 @@ export default function sendmail(dataForm) {
             console.error('Erreur lors de l\'envoi :', error);
             bool = false;
         } 
-        console.log('E-mail envoyé :', info.response);
     });
     return bool;
 }
