@@ -1,15 +1,56 @@
 
+
 const go_to = (Element) => {
     const element = document.getElementById(Element);
-    element.scrollIntoView(
-        { 
-            behavior:'smooth',
-            block:'start'
+    const rect = element.getBoundingClientRect();
+    console.log(element.getClientRects(),screen.height)
+   
+    const asideFlottant = document.querySelector(`.fixe-asideFlottant`)
+    let offset = screen.width <= 900 ? asideFlottant.getBoundingClientRect().height : 50
+    if(asideFlottant instanceof HTMLElement) {
+        
+        console.log(element.getBoundingClientRect().top)
+        window.scrollTo(
+            {
+                behavior: "smooth",
+                top: rect.y + window.scrollY - offset - 30
+            });
+    }
+}
+
+const cancel = (origineDisplay,canceller) =>
+{
+    console.log("in",origineDisplay)
+    const ListeDisplay = ["flex","block","grid","inline-flex","inline-block"];
+    const asideFlottant = document.querySelector(`.fixe-asideFlottant`);
+    const ul = asideFlottant.querySelector("ul");
+    const enfantUL = ul.querySelectorAll("*");
+    if(asideFlottant instanceof HTMLElement && canceller instanceof HTMLElement)
+    {
+        const valueDisplay = window.getComputedStyle(enfantUL[0]).display;
+        console.log("out",valueDisplay)
+        console.log(ListeDisplay.includes(valueDisplay),valueDisplay)
+        if(ListeDisplay.includes(valueDisplay))
+        {
+            enfantUL.forEach(li => li.style.display = "none");
+            canceller.className = "canceller-active";
+            
+
         }
-    );
+        else 
+        {
+            enfantUL.forEach(li => li.style.display = `${origineDisplay}`);
+            canceller.className = "cancel-aside";
+        }
+    }
     
 }
 
+const allCanceller = document.querySelectorAll("[class|='cancel']");
+console.log(allCanceller)
+allCanceller.forEach(
+    elt => elt.onclick = () => cancel(elt.getAttribute("valueDisplay"),elt)
+);
 const handleClickLi = (element) => {
     if(element instanceof HTMLElement)
     {

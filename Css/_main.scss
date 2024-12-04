@@ -29,10 +29,31 @@ main h2
     margin-right: 2em;
     background-color: variables.$colorFive;
     border-radius: 1em;
-    height: 25em;
+    align-self: baseline;
     @include variables.baseShadow();
+    img 
+    {
+        /*padding: 1;
+        background-color: red;*/
+        @include variables.imageFlottante($width : 2em);
+    }
 }
 
+.canceller-active
+{
+    padding : .5em;
+    background-color : white;
+    border-radius :100%;
+    filter: drop-shadow(.1em .1em .1em black );
+
+}
+
+.cancel-aside
+{
+    padding : 0;
+    background-color : none;
+    border-radius : 0;
+}
 
 
 
@@ -47,11 +68,10 @@ main h2
     margin: 0 1em;
     li
     {
-        display: block;
         @include variables.baseLi();
         color: variables.$colorText;
         transition: transform 1s ease;
-        margin: 0.4em 1em !important;
+        margin: 1em 1em !important;
 
         &:hover
         {

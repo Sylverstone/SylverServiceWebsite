@@ -19,6 +19,7 @@ if(inPage){
 
 header.innerHTML = 
 `
+    <div class=".variables"></div>
     ${headerValue}
         <nav class="fixe-nav">
             <ul class="nav-ul">
