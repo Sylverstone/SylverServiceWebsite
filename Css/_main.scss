@@ -70,15 +70,17 @@ main h2
     {
         @include variables.baseLi();
         color: variables.$colorText;
-        transition: transform 1s ease;
+        transition: transform 1s ease, box-shadow 1s ease;
         margin: 1em 1em !important;
 
         &:hover
         {
-            transform: scale(1.2);
+            transform: skewX(-8deg) scale(1.2);
+            @include variables.baseShadow();
         }
         
     }
+
 
     span
     {
@@ -122,8 +124,26 @@ main h2
     }
 }
 
+#ImagesSylverservice
+{
+    margin-top: 2em;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill,variables.$tailleIMGSylverService);
+    justify-content: center;
+    gap: 5em;
+    img
+    {
+        border-radius: 2em;
+        @include variables.baseShadow();
+        height: auto;
+        max-width: variables.$tailleIMGSylverService;
+    }
+}
 
-@media (max-width: 1766px) {
+
+@media (max-width: 1800px) {
 
     .fixe-asideFlottant
     {
