@@ -28,26 +28,25 @@ const cancel = (origineDisplay,canceller) =>
     if(asideFlottant instanceof HTMLElement && canceller instanceof HTMLElement)
     {
         const valueDisplay = window.getComputedStyle(enfantUL[0]).display;
-        console.log("out",valueDisplay)
-        console.log(ListeDisplay.includes(valueDisplay),valueDisplay)
         if(ListeDisplay.includes(valueDisplay))
         {
             enfantUL.forEach(li => li.style.display = "none");
             canceller.className = "canceller-active";
-            
+            canceller.setAttribute("src","Images/oeil.png");
 
         }
         else 
         {
             enfantUL.forEach(li => li.style.display = `${origineDisplay}`);
             canceller.className = "cancel-aside";
+            canceller.setAttribute("src","Images/croix.png");
+            
         }
     }
     
 }
 
 const allCanceller = document.querySelectorAll("[class|='cancel']");
-console.log(allCanceller)
 allCanceller.forEach(
     elt => elt.onclick = () => cancel(elt.getAttribute("valueDisplay"),elt)
 );
@@ -80,9 +79,7 @@ if(mainUl)
     let allLi2 = mainUl.querySelectorAll('li');
 
     allLi2.forEach(li => {
-        console.log(li.className);
         li.onclick = () => go_to(li.className);
     })
 }
-
 
