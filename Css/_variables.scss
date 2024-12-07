@@ -21,6 +21,15 @@ $tailleIMGSylverService : 30em;
     flex-direction: column;
 }
 
+@mixin MoveBG()
+{
+    @keyframes MoveBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+    }
+}
+
 @mixin imageFlottante($width : 5em, $top : 0, $right : 0)
 {
     position: absolute;
@@ -31,17 +40,18 @@ $tailleIMGSylverService : 30em;
     filter: drop-shadow(.1em.1em.1em black);
 }
 
-@mixin baseLi()
+@mixin baseLi($background : $colorFour)
 {
     display: flex;
     justify-content: center;
     cursor: pointer;
-    background-color: $colorFour;
+    background: $background;
     //padding: 1em;
     height: 3em;
     align-items: center;
     border-radius: .7em;
     border: .1em solid $colorTwo;
+    @content
 }
 
 @mixin baseShadow($attr: .1em .1em .1em, $colorShadow: black)

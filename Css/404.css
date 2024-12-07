@@ -8,7 +8,7 @@ body {
   animation: moveBG 10s infinite;
 }
 
-@keyframes moveBG {
+@keyframes MoveBG {
   0% {
     background-position: 0% 50%;
   }

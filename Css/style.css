@@ -9,7 +9,7 @@ body {
   animation: moveBG 10s infinite;
 }
 
-@keyframes moveBG {
+@keyframes MoveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -66,15 +66,28 @@ h1, h2 {
   display: flex;
   justify-content: center;
   cursor: pointer;
-  background-color: rgb(78, 128, 152);
+  background: linear-gradient(to right, rgb(33, 33, 33), rgb(78, 128, 152), rgb(64, 64, 64));
   height: 3em;
   align-items: center;
   border-radius: 0.7em;
   border: 0.1em solid rgb(252, 247, 248);
+  background-size: 200% 200%;
+  animation: moveBG 10s infinite;
   margin: 0.7em 0.7em;
   grid-row: span 1;
 }
 
+@keyframes MoveBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 li a, li {
   font-size: 1.2em;
   font-family: "Kanit", sans-serif;
@@ -116,9 +129,7 @@ li:hover .lien-nav::after {
   }
 }
 footer {
-  width: 90%;
-  margin-bottom: 0.4em;
-  border-radius: 2em;
+  width: 100%;
   background-color: black;
   display: flex;
   flex-wrap: wrap;
@@ -134,14 +145,20 @@ footer div {
 footer div a {
   display: block;
   font-family: "Barlow", sans-serif;
-  font-size: 0.8em;
-  padding: 2em;
+  font-size: 1em;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 1em !important;
-  background-color: rgba(255, 255, 255, 0.2);
+  margin: 2em !important;
   border-radius: 2em;
   z-index: 1;
+}
+footer div a::after {
+  content: "";
+  position: absolute;
+  bottom: 1.5em;
+  width: 100%;
+  border-bottom: 0.1em dotted white;
+  right: 0;
 }
 footer div:hover img {
   opacity: 1;
@@ -181,7 +198,7 @@ main > * {
 main h2 {
   padding: 0.5em 2em;
   background-color: rgb(252, 247, 248);
-  border-radius: 2em;
+  border-radius: 0.8em;
 }
 
 .fixe-asideFlottant {
@@ -189,7 +206,7 @@ main h2 {
   top: 10em;
   right: 0;
   margin-right: 2em;
-  background-color: rgb(64, 64, 64);
+  background-color: rgba(64, 64, 64, 0.6);
   border-radius: 1em;
   align-self: baseline;
   box-shadow: 0.1em 0.1em 0.1em black;
@@ -230,7 +247,7 @@ main h2 {
   display: flex;
   justify-content: center;
   cursor: pointer;
-  background-color: rgb(78, 128, 152);
+  background: rgb(78, 128, 152);
   height: 3em;
   align-items: center;
   border-radius: 0.7em;
@@ -259,7 +276,7 @@ main h2 {
   flex-direction: column;
   justify-content: center;
   align-items: self-start;
-  background-color: rgb(64, 64, 64);
+  background-color: rgba(64, 64, 64, 0.6);
   padding: 1em;
   border-radius: 1.6em;
 }
@@ -312,6 +329,15 @@ main h2 {
   }
   .main-ul li:hover {
     transform: scale(1.05);
+  }
+}
+@media (max-width: 900px) {
+  #ImagesSylverservice {
+    grid-template-columns: repeat(auto-fill, 10em);
+    gap: 2em;
+  }
+  #ImagesSylverservice img {
+    width: 10em;
   }
 }
 .main-techniques {

@@ -18,7 +18,7 @@ main h2
 {
     padding: .5em 2em;
     background-color: variables.$colorTwo;
-    border-radius: 2em;
+    border-radius: .8em;
 }
 
 .fixe-asideFlottant
@@ -27,7 +27,7 @@ main h2
     top: 10em;
     right: 0;
     margin-right: 2em;
-    background-color: variables.$colorFive;
+    background-color: rgba($color: variables.$colorFive, $alpha: .6);
     border-radius: 1em;
     align-self: baseline;
     @include variables.baseShadow();
@@ -104,7 +104,7 @@ main h2
         flex-direction: column;
         justify-content: center;
         align-items: self-start;
-        background-color: variables.$colorFive;
+        background-color: rgba($color: variables.$colorFive, $alpha: .6);
         padding: 1em;
         border-radius: 1.6em;
         
@@ -170,6 +170,19 @@ main h2
             {
                 transform: scale(1.05);
             }
+        }
+    }
+}
+
+@media (max-width: variables.$valeurPxPtitFormat)
+{
+    #ImagesSylverservice
+    {
+        grid-template-columns: repeat(auto-fill,10em);
+        gap:2em;
+        img
+        {
+            width: 10em;
         }
     }
 }

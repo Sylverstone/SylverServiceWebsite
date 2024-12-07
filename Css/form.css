@@ -8,7 +8,7 @@ body {
   animation: moveBG 10s infinite;
 }
 
-@keyframes moveBG {
+@keyframes MoveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -65,15 +65,28 @@ h1, h2 {
   display: flex;
   justify-content: center;
   cursor: pointer;
-  background-color: rgb(78, 128, 152);
+  background: linear-gradient(to right, rgb(33, 33, 33), rgb(78, 128, 152), rgb(64, 64, 64));
   height: 3em;
   align-items: center;
   border-radius: 0.7em;
   border: 0.1em solid rgb(252, 247, 248);
+  background-size: 200% 200%;
+  animation: moveBG 10s infinite;
   margin: 0.7em 0.7em;
   grid-row: span 1;
 }
 
+@keyframes MoveBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 li a, li {
   font-size: 1.2em;
   font-family: "Kanit", sans-serif;
