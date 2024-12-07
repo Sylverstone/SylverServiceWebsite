@@ -48,21 +48,6 @@ img
 
 }
 
-body
-{
-    @include variables.flexColumn();
-    background: linear-gradient(to right,variables.$colorOne,variables.$colorFour,variables.$colorFive);
-    background-size: 200% 200%;
-    animation: moveBG 10s infinite;
-
-}
-
-@keyframes moveBG
-{
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
 
 @media (max-width: variables.$valeurPxPtitFormat) //mobile
 {

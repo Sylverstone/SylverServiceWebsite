@@ -1,12 +1,11 @@
 @use 'variables';
 @use 'body';
 @use 'navHeader';
-@use 'sass:math';
 
 $couleurBordRadio : black;
 $couleurCentreRadio : $couleurBordRadio;
 $heightCheckBox : 1.3em;
-$widthRadioBox : 1em;
+$widthRadioBox : 1.6em;
 
 *
 {
@@ -96,7 +95,7 @@ form
         flex-direction: row;
         align-items: flex-end;
         justify-content: center;
-        margin: .5em 0em;
+        margin: .5em .5em;
     }
 }
 
@@ -167,11 +166,9 @@ textarea
 input[type ="radio"], input[type="checkbox"]
 {
     cursor:pointer;
-    position: relative;
+    position: relative !important;
     width: 0;
     height: 0;
-
-    
 }
 
 
@@ -188,37 +185,20 @@ input[type="radio"]
         height: $widthRadioBox;
         width: $widthRadioBox;
         bottom: 0;
-        border-radius: 1em;
+        border-radius: 200%;
         left: 0;
         z-index: -1;
     }
-    
-    &::before
-    {
-        align-self: center;
-        cursor: pointer;
-        content: "";
-        position: absolute;
-        height : .7em;
-        width : .7em;
-        border-radius: 1em;
-        background-color: transparent;
-        z-index: -2;
-        left: ($widthRadioBox - 0.7em) - .07em ;
-        bottom: ($widthRadioBox - 0.7em) - .1em;
-        
-    }
 
-    &:checked::before
+
+    &:checked::after
     {
-        background-color: $couleurCentreRadio;
+        background-size: 70% 70% !important;
+        background-position: center;
+        background-image: url("../Images/rondNoir.png");
+        background-repeat: no-repeat;
     }
     
-    &:not(:checked)::before
-    {
-        background-color: transparent;
-    }
-
 }
 
 
@@ -239,15 +219,15 @@ input[type="checkbox"]
     {
         -webkit-mask-size: contain;
         mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
         -webkit-mask-image: url("../Images/unchecked.png");
         mask-image: url("../Images/unchecked.png");    
         content: "";
         position: absolute;
         bottom: 0;
-        width: $heightCheckBox;
-        height: $heightCheckBox;
-        border: .1em solid $couleurBordRadio;
-        border-radius: 1em;
+        width: $heightCheckBox - .1em;
+        height: $heightCheckBox - .1em;
         left: 0;
         background-color: black;
         transition: left 200ms ease;
@@ -271,6 +251,15 @@ label[for="textZone"]
     white-space: nowrap;
 }
 
+.champValidation
+{
+    display: flex;
+    align-items: flex-end;
+    label
+    {
+        margin-right: 1em;
+    }
+}
 @media (max-width: variables.$valeurPxPtitFormat)
 {
     .title

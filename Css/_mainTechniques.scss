@@ -10,11 +10,27 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 40em;
+}
+
+
+
+.plusGros
+{
+    font-size: 1.3em;
+}
+
+.contenuTechnique
+{
+    margin-left: 4em
 }
 
 .langages
 {
+
+    a
+    {
+        text-decoration: underline;
+    }
 
     flex-wrap: wrap;
     position: relative;
@@ -36,18 +52,18 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        max-width: 20em;
+        width: 100%;
         margin: 1em;
         img
         {
-            width: 6em;
+            width: 8em;
             margin: 1em 1em;
             height: auto;
             filter: drop-shadow(.1em .1em .1em black);
         }
     }
 
-    div
+    div:not([class])
     {
         background-color: rgba($color: variables.$colorOne, $alpha: 1.0);
         @include variables.baseShadow($colorShadow : variables.$colorFive);
@@ -57,7 +73,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: 50em;
 
         p
         {
@@ -70,7 +85,7 @@
 
 .logoSylverService
 {
-    margin: .6em;
+    margin: 1.5em;
     position: absolute;
     width: 4em;
     height: auto;
@@ -78,6 +93,16 @@
     opacity: 0.5 !important;
 }
 
+@media (max-width: 2200px) {
+    .langages
+    {
+       aside
+       {
+        max-width: none;
+        width: 100%;
+       }
+    }
+}
 @media (max-width: variables.$valeurPxPtitFormat) //mobile
 {
     .langages
@@ -90,6 +115,11 @@
             }
         }
 
+    }
+
+    .plusGros
+    {
+        font-size: 1.2em;
     }
 
     .logoSylverService

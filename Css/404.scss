@@ -51,5 +51,6 @@ figcaption
     font-size: 6em;
     color: white;
     font-family: "Yuji Mai", serif;
+    @include variables.baseShadowText();
     
 }

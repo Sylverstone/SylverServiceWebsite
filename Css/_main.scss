@@ -35,7 +35,8 @@ main h2
     {
         /*padding: 1;
         background-color: red;*/
-        @include variables.imageFlottante($width : 2em);
+        @include variables.imageFlottante($width : 1em);
+        margin: .5em;
     }
 }
 

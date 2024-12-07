@@ -8,7 +8,7 @@ body {
   animation: moveBG 10s infinite;
 }
 
-@keyframes MoveBG {
+@keyframes moveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -62,4 +62,5 @@ figcaption {
   font-size: 6em;
   color: white;
   font-family: "Yuji Mai", serif;
+  text-shadow: 0.1em 0.1em 0.1em black;
 }/*# sourceMappingURL=404.css.map */

@@ -9,7 +9,7 @@ body {
   animation: moveBG 10s infinite;
 }
 
-@keyframes MoveBG {
+@keyframes moveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -77,7 +77,7 @@ h1, h2 {
   grid-row: span 1;
 }
 
-@keyframes MoveBG {
+@keyframes moveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -215,11 +215,12 @@ main h2 {
   /*padding: 1;
   background-color: red;*/
   position: absolute;
-  width: 2em;
+  width: 1em;
   height: auto;
   top: 0;
   right: 0;
   filter: drop-shadow(0.1em 0.1em 0.1em black);
+  margin: 0.5em;
 }
 
 .canceller-active {
@@ -348,7 +349,14 @@ main h2 {
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 40em;
+}
+
+.plusGros {
+  font-size: 1.3em;
+}
+
+.contenuTechnique {
+  margin-left: 4em;
 }
 
 .langages {
@@ -361,6 +369,9 @@ main h2 {
   background-color: rgba(33, 33, 33, 0.3);
   border-radius: 1em;
 }
+.langages a {
+  text-decoration: underline;
+}
 .langages aside {
   background-color: rgba(64, 64, 64, 0.2);
   box-shadow: 0.1em 0.1em 0.1em rgb(33, 33, 33);
@@ -370,16 +381,16 @@ main h2 {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 20em;
+  width: 100%;
   margin: 1em;
 }
 .langages aside img {
-  width: 6em;
+  width: 8em;
   margin: 1em 1em;
   height: auto;
   filter: drop-shadow(0.1em 0.1em 0.1em black);
 }
-.langages div {
+.langages div:not([class]) {
   background-color: #212121;
   box-shadow: 0.1em 0.1em 0.1em rgb(64, 64, 64);
   margin: 1em;
@@ -388,16 +399,15 @@ main h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 50em;
 }
-.langages div p {
+.langages div:not([class]) p {
   font-family: "Titillium Web";
   font-size: 1.5em;
   margin: 1em;
 }
 
 .logoSylverService {
-  margin: 0.6em;
+  margin: 1.5em;
   position: absolute;
   width: 4em;
   height: auto;
@@ -405,9 +415,18 @@ main h2 {
   opacity: 0.5 !important;
 }
 
+@media (max-width: 2200px) {
+  .langages aside {
+    max-width: none;
+    width: 100%;
+  }
+}
 @media (max-width: 900px) {
   .langages aside img {
     width: 3em;
+  }
+  .plusGros {
+    font-size: 1.2em;
   }
   .logoSylverService {
     width: 2em;
@@ -446,25 +465,6 @@ img {
   white-space: pre-wrap;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(to right, rgb(33, 33, 33), rgb(78, 128, 152), rgb(64, 64, 64));
-  background-size: 200% 200%;
-  animation: moveBG 10s infinite;
-}
-
-@keyframes moveBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 @media (max-width: 900px) {
   p {
     font-size: 0.7em !important;

@@ -8,7 +8,7 @@ body {
   animation: moveBG 10s infinite;
 }
 
-@keyframes MoveBG {
+@keyframes moveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -76,7 +76,7 @@ h1, h2 {
   grid-row: span 1;
 }
 
-@keyframes MoveBG {
+@keyframes moveBG {
   0% {
     background-position: 0% 50%;
   }
@@ -201,7 +201,7 @@ form p {
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
-  margin: 0.5em 0em;
+  margin: 0.5em 0.5em;
 }
 
 input, select {
@@ -248,7 +248,7 @@ textarea {
 
 input[type=radio], input[type=checkbox] {
   cursor: pointer;
-  position: relative;
+  position: relative !important;
   width: 0;
   height: 0;
 }
@@ -262,31 +262,18 @@ input[type=radio]::after {
   content: " ";
   border: 0.1em solid black;
   position: absolute;
-  height: 1em;
-  width: 1em;
+  height: 1.6em;
+  width: 1.6em;
   bottom: 0;
-  border-radius: 1em;
+  border-radius: 200%;
   left: 0;
   z-index: -1;
 }
-input[type=radio]::before {
-  align-self: center;
-  cursor: pointer;
-  content: "";
-  position: absolute;
-  height: 0.7em;
-  width: 0.7em;
-  border-radius: 1em;
-  background-color: transparent;
-  z-index: -2;
-  left: 0.23em;
-  bottom: 0.2em;
-}
-input[type=radio]:checked::before {
-  background-color: black;
-}
-input[type=radio]:not(:checked)::before {
-  background-color: transparent;
+input[type=radio]:checked::after {
+  background-size: 70% 70% !important;
+  background-position: center;
+  background-image: url("../Images/rondNoir.png");
+  background-repeat: no-repeat;
 }
 
 input[type=checkbox]::after {
@@ -301,15 +288,15 @@ input[type=checkbox]::after {
 input[type=checkbox]::before {
   -webkit-mask-size: contain;
   mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   -webkit-mask-image: url("../Images/unchecked.png");
   mask-image: url("../Images/unchecked.png");
   content: "";
   position: absolute;
   bottom: 0;
-  width: 1.3em;
-  height: 1.3em;
-  border: 0.1em solid black;
-  border-radius: 1em;
+  width: 1.2em;
+  height: 1.2em;
   left: 0;
   background-color: black;
   transition: left 200ms ease;
@@ -326,6 +313,14 @@ label[for=textZone] {
 
 .grpMot {
   white-space: nowrap;
+}
+
+.champValidation {
+  display: flex;
+  align-items: flex-end;
+}
+.champValidation label {
+  margin-right: 1em;
 }
 
 @media (max-width: 900px) {
