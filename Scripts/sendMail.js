@@ -4,9 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import nodemailer from 'nodemailer';
 
-export default function sendmail(dataForm) {
-    console.log('Envoyer depuis :', process.env.EMAILOUT);
-    
+export default function sendmail(dataForm) {    
     const transporteur = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -15,7 +13,8 @@ export default function sendmail(dataForm) {
             pass: process.env.PASSWORD,
         },
     });
-        
+    
+    const retoureEMailText = dataForm.EmailRetour === undefined ? "L'utilisateur n'accepte pas de recevoir un email en retour" : "L'utilisateur accepte de recevoir un email en retour";
     const html = `<h1>Email Automatique :)</h1>
                   <ul>
                       <li>Nom : ${dataForm.Nom}</li>
@@ -23,6 +22,7 @@ export default function sendmail(dataForm) {
                       <li>Email : ${dataForm.email}</li>
                       <li>Type d'individu : ${dataForm.TypeEntreprise}</li>
                       <li>Message : ${dataForm.textZone}</li>
+                      <li>${retoureEMailText}</li>
                   </ul>`;
 
     const mailOptions = {

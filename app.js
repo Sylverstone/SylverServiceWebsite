@@ -37,11 +37,10 @@ app.get('/getImage', (req, res) => {
         console.log(files);
         res.json(files);
     });
+
 });
 
 app.use(express.static(path.join(__dirname)));
-
-
 
 app.get('/form', (req, res) => {
     console.log(req.query);

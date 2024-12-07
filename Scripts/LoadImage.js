@@ -26,13 +26,14 @@ async function loadImage()
     }
     catch(e)
     {
-        alert("Erreur lors du chargement des images" + e);
+        alert("Erreur lors du chargement des images\nErreur : " + e);
         return undefined;
     }
     
 }
 
 allImage = loadImage();
+//renvoie une promise car loadImage est une fonctione asynchrone
 allImage.then((result) => {
     const images = result;
     console.log(result)
@@ -43,6 +44,6 @@ allImage.then((result) => {
         }
     })
 }).catch((err) => {
-    console.log(err);
+    alert("Erreur lors du chargement des images\nErreur : " + err);
 });
 
