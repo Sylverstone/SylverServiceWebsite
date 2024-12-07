@@ -2,9 +2,7 @@
 
 footer
 {
-    width: 90%;
-    margin-bottom: .4em;
-    border-radius: variables.$borderRadiusFooter;
+    width: 100%;
     background-color: black;
     display: flex;
     flex-wrap: wrap;
@@ -19,13 +17,21 @@ footer
         {
             display: block;
             font-family: "Barlow",sans-serif;
-            font-size: .8em;
-            padding: 2em;
+            font-size: 1em;
             width: fit-content;
-            margin: 1em !important;
-            background-color: rgba(255,255,255,0.2);
+            margin: 2em !important;
             border-radius: variables.$borderRadiusFooter;
             z-index: 1;
+
+            &::after
+            {
+                content: "";
+                position: absolute;
+                bottom: 1.5em;
+                width: 100%;
+                border-bottom: .1em dotted white;
+                right: 0;
+            }
         }
 
         &:hover
@@ -68,5 +74,6 @@ footer
                 margin: .7em !important;
             }
         }
+
     }
 }

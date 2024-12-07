@@ -7,11 +7,11 @@ footer.innerHTML =
     <img src="Images/justice.png" alt="mention légales" class="footerIMG" clickEvent="false">
 </div>
 <div>
-    <a href="">Mon Github</a>
+    <a href="https://github.com/Sylverstone/" target="_blank">Mon Github</a>
     <img src="Images/github.svg" alt="mention légales" class="footerIMG" clickEvent="false">
 </div>
 <div>
-    <a href="">Mon LinkedIn</a>
+    <a href="https://www.linkedin.com/in/sylviopelagemaxime/" target="_blank">Mon LinkedIn</a>
     <img src="Images/Icon_linkedin.png" alt="mention légales" class="footerIMG" clickEvent="false">
 </div>  
 <div>
