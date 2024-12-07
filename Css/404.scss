@@ -1,25 +1,19 @@
 @use 'body';
 @use 'variables';
 
-html
-{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+
 
 body
 {
     cursor: crosshair;
-    width: 100%;
-    height: 100%;
+
     align-items: center;
     justify-content: center;
 }
 
 img:not([alt="Home"])
 {
-   width: 30%;
+   width: 20em;
    height: auto;
    border: .1em solid variables.$colorFour;
    border-radius: 200%;
@@ -50,7 +44,35 @@ figcaption
 {
     font-size: 6em;
     color: white;
+    text-align: center;
     font-family: "Yuji Mai", serif;
     @include variables.baseShadowText();
+}
+
+p
+{
+    font-family: variables.$fontTextBase;
+    font-size: 2em;
+    color: white;
+    @include variables.baseShadowText();
+    text-align: center;
+    margin: 2em 2em;
+}
+
+@media  (max-width : variables.$valeurPxPtitFormat) 
+{
+    img:not([alt="Home"])
+    {
+        margin-top: 2em;
+        width: 15em;
+    }
+    figcaption
+    {
+        font-size: 2.3em;
+    }
+    p
+    {
+        font-size: 1em
+    }
     
 }

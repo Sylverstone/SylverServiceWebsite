@@ -19,22 +19,14 @@ body {
     background-position: 0% 50%;
   }
 }
-html {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
 body {
   cursor: crosshair;
-  width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
 }
 
 img:not([alt=Home]) {
-  width: 30%;
+  width: 20em;
   height: auto;
   border: 0.1em solid rgb(78, 128, 152);
   border-radius: 200%;
@@ -61,6 +53,29 @@ a {
 figcaption {
   font-size: 6em;
   color: white;
+  text-align: center;
   font-family: "Yuji Mai", serif;
   text-shadow: 0.1em 0.1em 0.1em black;
+}
+
+p {
+  font-family: "Titillium Web";
+  font-size: 2em;
+  color: white;
+  text-shadow: 0.1em 0.1em 0.1em black;
+  text-align: center;
+  margin: 2em 2em;
+}
+
+@media (max-width: 900px) {
+  img:not([alt=Home]) {
+    margin-top: 2em;
+    width: 15em;
+  }
+  figcaption {
+    font-size: 2.3em;
+  }
+  p {
+    font-size: 1em;
+  }
 }/*# sourceMappingURL=404.css.map */
