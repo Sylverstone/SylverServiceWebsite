@@ -1,8 +1,4 @@
 User-Agent : *
-
-Disallow: /package.json
-Disallow: /package-lock.json
-Disallow: /.gitignore
-Disallow: /.env
+Disallow: /pages/404.html
 
 sitemap: https://sylverservice.up.railway.app/sitemap.xml
