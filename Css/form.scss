@@ -125,6 +125,8 @@ input[type="submit"]
 input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),select
 {
    margin-left: 1em;
+   background-color: variables.$couleurArrierePlanInput;
+   color: white;
 }
 
 fieldset
@@ -158,88 +160,98 @@ fieldset
 
 textarea
 {
-    border: .1em dashed darkblue;
+    border: .1em solid black;
     aspect-ratio:  16 / 5;
     border-radius: .5em;
+    background-color: variables.$couleurArrierePlanInput;
+    color: white;
+    &::placeholder
+    {
+        color: white;
+    }
 }
 
-input[type ="radio"], input[type="checkbox"]
+input[type="radio"] + label, input[type="checkbox"] + label
 {
     cursor:pointer;
     position: relative !important;
-    width: 0;
-    height: 0;
 }
 
+input[type="radio"],input[type="checkbox"]{
+    display: none;
+}
 
-input[type="radio"]
+input[type="radio"] + label
 {
     margin: 0 2em;
     z-index: 16;
-    &::after
-    {
-        cursor: pointer;
-        content: " ";
-        border: .1em solid $couleurBordRadio;
-        position: absolute;
-        height: $widthRadioBox;
-        width: $widthRadioBox;
-        bottom: 0;
-        border-radius: 200%;
-        left: 0;
-        z-index: -1;
-    }
-
-
-    &:checked::after
-    {
-        background-size: 70% 70% !important;
-        background-position: center;
-        background-image: url("../Images/rondNoir.png");
-        background-repeat: no-repeat;
-    }
-    
 }
 
 
-input[type="checkbox"]
+input[type="radio"] + label::after
 {
-    &::after
-    {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        width: 3em;
-        height: $heightCheckBox;
-        border: .1em solid $couleurBordRadio;
-        border-radius: 1em;
-    }
-
-    &::before
-    {
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-image: url("../Images/unchecked.png");
-        mask-image: url("../Images/unchecked.png");    
-        content: "";
-        position: absolute;
-        bottom: 0;
-        width: $heightCheckBox - .1em;
-        height: $heightCheckBox - .1em;
-        left: 0;
-        background-color: black;
-        transition: left 200ms ease;
-    }
- 
-    &:checked::before
-    {
-        -webkit-mask-image: url("../Images/checked.png");
-        mask-image: url("../Images/checked.png");
-        left: calc(3em - $heightCheckBox);
-    }
+    cursor: pointer;
+    content: "";
+    border: .1em solid $couleurBordRadio;
+    position: absolute;
+    height: $widthRadioBox;
+    width: $widthRadioBox;
+    border-radius: 200%;
+    z-index: -1;
+    margin-left: 1em;
 }
+
+input[type="radio"]:checked + label::after
+{
+    background-size: 70% 70% !important;
+    background-position: center;
+    background-image: url("../Images/rondNoir.png");
+    background-repeat: no-repeat;
+}
+
+input[type="checkbox"] + label
+{
+    margin : 0 2em
+}
+
+input[type="checkbox"] + label::after
+{
+    content: "";
+    position: absolute;
+    width: 3em;
+    height: $heightCheckBox;
+    border: .1em solid $couleurBordRadio;
+    border-radius: 1em;
+    margin-left: 1em
+}
+
+
+input[type="checkbox"] + label::before
+{
+    content: "";
+    position: absolute;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-image: url("../Images/unchecked.png");
+    mask-image: url("../Images/unchecked.png");    
+    bottom: .2em;
+    left: 100%;
+    margin-left: 1em + .2em;
+    width: $heightCheckBox - .3em;
+    height: $heightCheckBox - .2em;
+    background-color: black;
+    transition: left 200ms ease;
+}
+
+input[type="checkbox"]:checked + label::before
+{
+    -webkit-mask-image: url("../Images/checked.png");
+    mask-image: url("../Images/checked.png");
+    left: calc(100% + 3em - $heightCheckBox - .2em);
+}
+
 
 label[for="textZone"]
 {
@@ -260,6 +272,7 @@ label[for="textZone"]
         margin-right: 1em;
     }
 }
+
 @media (max-width: variables.$valeurPxPtitFormat)
 {
     .title

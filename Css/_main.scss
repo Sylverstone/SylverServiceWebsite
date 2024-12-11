@@ -30,11 +30,10 @@ main h2
     background-color: rgba($color: variables.$colorFive, $alpha: .6);
     border-radius: 1em;
     align-self: baseline;
+    z-index: 16;
     @include variables.baseShadow();
     img 
     {
-        /*padding: 1;
-        background-color: red;*/
         @include variables.imageFlottante($width : 1em);
         margin: .5em;
     }
@@ -133,11 +132,12 @@ main h2
     grid-auto-flow: row;
     grid-template-columns: repeat(auto-fill,variables.$tailleIMGSylverService);
     justify-content: center;
+    align-items: baseline;
     gap: 5em;
     img
     {
         border-radius: 2em;
-        @include variables.baseShadow();
+        filter: drop-shadow(.1em .1em .1em black);
         height: auto;
         max-width: variables.$tailleIMGSylverService;
     }
@@ -156,6 +156,7 @@ main h2
         align-items: center;
         justify-content: center;
         background-color: rgba($color: variables.$colorFive, $alpha: .6);
+        
     }
 
     .main-ul
@@ -166,12 +167,7 @@ main h2
         li
         {
             margin: .4em .1em;
-
-            &:hover
-            {
-                transform: scale(1.05);
-            }
-        }
+        }        
     }
 }
 

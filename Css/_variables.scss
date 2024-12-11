@@ -13,6 +13,8 @@ $tailleImageFooter : 4em;
 $fontTextBase : "Titillium Web";
 $valeurPxPtitFormat : 900px;
 $tailleIMGSylverService : 30em;
+$couleurArrierePlanInput : rgba(0,0,0,.4);
+$divideFactorImageFooter : 1.4;
 
 /*MIXIN*/
 @mixin flexColumn()

@@ -20,8 +20,7 @@ img
 .full-Body
 {
  
-    width: 100%;
-    height: 100%;
+
     color: white;
 
     main
@@ -35,7 +34,7 @@ img
     
     p
     {
-        font-size: .8em;
+        font-size: 1em;
         font-family: variables.$fontTextBase;
         padding: 1em;
         background-color: variables.$colorFive;
@@ -46,6 +45,13 @@ img
         white-space: pre-wrap;
     }
 
+}
+
+.full-html,.full-Body
+{
+    min-height: 98%;
+    height: 98%;
+    overflow-x: hidden;
 }
 
 

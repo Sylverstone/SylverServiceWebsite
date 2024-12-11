@@ -57,9 +57,10 @@ Les tutos sous forme de documents s'afficheront avec une police noir.
 Un tuto peut être <b>signaler</b> et son propriétaire peut le <b>modifier ainsi que le supprimer</b>.
             </div>
         <b class="plusGros">Annonce :</b>
-
-            Dans cette page l'utilisateur retrouveras toutes les demandes de tutos présentent sur l'application. 
-            Cette page peut aussi comporter des sondages/questions destinés aux utilisateurs de SylverService
+            <div class="contenuTechnique">
+Dans cette page l'utilisateur retrouveras toutes les demandes de tutos présentent sur l'application. 
+Cette page peut aussi comporter des sondages/questions destinés aux utilisateurs de SylverService
+            </div>
 
 * Toutes les pages de SylverService comporte des fichiers qui permettent <b>d'en apprendre plus sur l'utilisation de ces pages</b>. Généralement pour accéder a ces fichiers il faut clicker sur le point d'intérogation situé en haut a droite.
 
@@ -103,12 +104,10 @@ Pour toute question relative au site ou à l’application SylverService, veuill
 
 const script_ = document.currentScript;
 const indiceTexts = script_.getAttribute('indiceText');
-console.log(indiceTexts);
 AllParagraph = document.querySelectorAll("p[jsText='true']")
-console.log(AllParagraph)
+
 const makeText = (elt,idText) =>
 {
-    console.log("writing")
     elt.innerHTML = texts[indiceTexts][idText];
 
 }

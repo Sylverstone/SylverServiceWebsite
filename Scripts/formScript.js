@@ -15,8 +15,8 @@ body.onmousemove =  (ev) => {
     let shadowDiffuse = 2;
     let maxPage = document.documentElement.scrollWidth;
     let maxPageY = document.documentElement.scrollHeight;
-    let positionXShadow = y(x,(min-max)/-maxPage,min);
-    let positionYShadow = y(y_,(min-max)/-maxPageY,min);
+    let positionXShadow = y(x,(min-max)/(0-maxPage),min);
+    let positionYShadow = y(y_,(min-max)/(0-maxPageY),min);
     form.style.boxShadow = `${positionXShadow}em ${positionYShadow}em ${shadowDiffuse}em black`
 }
 

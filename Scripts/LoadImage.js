@@ -7,9 +7,7 @@ async function loadImage()
     try
     {
         const response = await fetch("../getImage");
-        const images = await response.json(); //liste des fichiers
-        
-        console.log(images);
+        const images = await response.json(); //liste des images
         const containerImage = document.querySelector("#ImagesSylverservice");
         if(containerImage instanceof HTMLElement)
         {
@@ -26,7 +24,7 @@ async function loadImage()
     }
     catch(e)
     {
-        alert("Erreur lors du chargement des images\nErreur : " + e);
+        alert("Erreur lors du chargement des images");
         return undefined;
     }
     
@@ -34,16 +32,19 @@ async function loadImage()
 
 allImage = loadImage();
 //renvoie une promise car loadImage est une fonctione asynchrone
-allImage.then((result) => {
-    const images = result;
-    console.log(result)
-    images.forEach((img) =>{
-        if(img instanceof HTMLElement)
-        {
-            img.onclick = () => window.open(img.getAttribute("src"),'_blank');
-        }
-    })
-}).catch((err) => {
-    alert("Erreur lors du chargement des images\nErreur : " + err);
-});
+if(allImage != undefined)
+{
+    allImage.then((result) => {
+        const images = result;
+        images.forEach((img) =>{
+            if(img instanceof HTMLElement)
+            {
+                img.onclick = () => window.open(img.getAttribute("src"),'_blank');
+            }
+        })
+    }).catch((err) => {
+        alert("Erreur lors du chargement des images\nErreur : " + err);
+    });
+    
+}
 

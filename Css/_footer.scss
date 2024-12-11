@@ -74,6 +74,11 @@ footer
                 margin: .7em !important;
             }
         }
-
+        img
+        {
+            width: calc(variables.$tailleImageFooter / variables.$divideFactorImageFooter) !important;
+            left: calc(50% - (variables.$tailleImageFooter / variables.$divideFactorImageFooter) / 2);
+        }
+        
     }
 }

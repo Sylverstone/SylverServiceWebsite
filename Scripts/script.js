@@ -82,4 +82,3 @@ if(mainUl)
         li.onclick = () => go_to(li.className);
     })
 }
-

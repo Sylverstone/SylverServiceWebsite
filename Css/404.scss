@@ -3,12 +3,19 @@
 
 
 
+html,body
+{
+    min-height: 98%;
+    height: 98%;
+    overflow-x: hidden;
+}
+
 body
 {
     cursor: crosshair;
-
     align-items: center;
     justify-content: center;
+
 }
 
 img:not([alt="Home"])

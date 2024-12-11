@@ -19,6 +19,12 @@ body {
     background-position: 0% 50%;
   }
 }
+html, body {
+  min-height: 98%;
+  height: 98%;
+  overflow-x: hidden;
+}
+
 body {
   cursor: crosshair;
   align-items: center;

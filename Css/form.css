@@ -126,6 +126,9 @@ li:hover .lien-nav::after {
   li a, li {
     font-size: 1em;
   }
+  .nav-ul {
+    gap: 0 0;
+  }
 }
 * {
   margin: 0;
@@ -222,6 +225,8 @@ input[type=submit]:hover {
 
 input:not([type=submit]):not([type=checkbox]):not([type=radio]), select {
   margin-left: 1em;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
 }
 
 fieldset {
@@ -241,70 +246,88 @@ fieldset {
 }
 
 textarea {
-  border: 0.1em dashed darkblue;
+  border: 0.1em solid black;
   aspect-ratio: 16/5;
   border-radius: 0.5em;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+textarea::-moz-placeholder {
+  color: white;
+}
+textarea::placeholder {
+  color: white;
+}
+
+input[type=radio] + label, input[type=checkbox] + label {
+  cursor: pointer;
+  position: relative !important;
 }
 
 input[type=radio], input[type=checkbox] {
-  cursor: pointer;
-  position: relative !important;
-  width: 0;
-  height: 0;
+  display: none;
 }
 
-input[type=radio] {
+input[type=radio] + label {
   margin: 0 2em;
   z-index: 16;
 }
-input[type=radio]::after {
+
+input[type=radio] + label::after {
   cursor: pointer;
-  content: " ";
+  content: "";
   border: 0.1em solid black;
   position: absolute;
   height: 1.6em;
   width: 1.6em;
-  bottom: 0;
   border-radius: 200%;
-  left: 0;
   z-index: -1;
+  margin-left: 1em;
 }
-input[type=radio]:checked::after {
+
+input[type=radio]:checked + label::after {
   background-size: 70% 70% !important;
   background-position: center;
   background-image: url("../Images/rondNoir.png");
   background-repeat: no-repeat;
 }
 
-input[type=checkbox]::after {
+input[type=checkbox] + label {
+  margin: 0 2em;
+}
+
+input[type=checkbox] + label::after {
   content: "";
   position: absolute;
-  bottom: 0;
   width: 3em;
   height: 1.3em;
   border: 0.1em solid black;
   border-radius: 1em;
+  margin-left: 1em;
 }
-input[type=checkbox]::before {
+
+input[type=checkbox] + label::before {
+  content: "";
+  position: absolute;
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-image: url("../Images/unchecked.png");
   mask-image: url("../Images/unchecked.png");
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 1.2em;
-  height: 1.2em;
-  left: 0;
+  bottom: 0.2em;
+  left: 100%;
+  margin-left: 1.2em;
+  width: 1em;
+  height: 1.1em;
   background-color: black;
   transition: left 200ms ease;
 }
-input[type=checkbox]:checked::before {
+
+input[type=checkbox]:checked + label::before {
   -webkit-mask-image: url("../Images/checked.png");
   mask-image: url("../Images/checked.png");
-  left: 1.7em;
+  left: calc(100% + 3em - 1.3em - 0.2em);
 }
 
 label[for=textZone] {

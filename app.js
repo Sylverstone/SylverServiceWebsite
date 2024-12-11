@@ -8,7 +8,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 export const  __dirname = path.dirname(__filename);
 
-
+console.log(__dirname);
 app.use('/Css', express.static(path.join(__dirname, '/Css')));
 app.use('/Scripts', express.static(path.join(__dirname, '/Scripts')));
 app.use('/pages', express.static(path.join(__dirname, '/pages')));
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/getImage', (req, res) => {
 
-    fs.readdir(path.join(__dirname,"Images","Sylverservice"), (err,files) =>
+    fs.readdir(path.join("Images","Sylverservice"), (err,files) =>
     {
         if(err)
         {
