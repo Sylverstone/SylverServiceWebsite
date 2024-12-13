@@ -3,7 +3,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "nodemailer": "^6.9.16",
+    "nodemon": "^3.1.9",
     "sass": "^1.81.0"
   },
-  "type" : "module"
+  "type": "module"
 }

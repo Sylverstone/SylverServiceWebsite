@@ -4,6 +4,10 @@ import { fileURLToPath } from 'url';
 import sendmail from './Scripts/sendMail.js';
 import fs from 'fs';
 
+const loadTemplate = (filePath) => {
+    return fs.readFileSync(path.join(__dirname, filePath), 'utf-8');
+};
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 export const  __dirname = path.dirname(__filename);
@@ -14,10 +18,25 @@ app.use('/Scripts', express.static(path.join(__dirname, '/Scripts')));
 app.use('/pages', express.static(path.join(__dirname, '/pages')));
 app.use('/Images', express.static(path.join(__dirname, '/Images')));
 
+const index = loadTemplate("index.html");
 
 app.get('/', (req, res) => {
     console.log(req.query);
-    return res.sendFile(path.join(__dirname, 'index.html'));
+    let fullPage;
+    const nav = 
+    `
+    <h1 class='title'>"Sylver Service : Vos élèves n'auront jamais été aussi soudés"</h1>
+        <nav class="fixe-nav">
+            <ul class="nav-ul">
+                <li><a class="lien-nav" href="index.html">Sylver Service</a></li>
+                <li><a class="lien-nav" href="pages/Techniques.html">Techniques</a></li>
+                <li><a class="lien-nav" href="pages/form.html">Formulaires</a></li>
+            </ul>
+        </nav>
+
+    `
+    fullPage = index.replace('{{header}}', nav);
+    return res.send(fullPage);
 })
 
 app.get('/getImage', (req, res) => {
