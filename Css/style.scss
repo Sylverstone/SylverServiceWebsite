@@ -55,6 +55,11 @@ img
 }
 
 
+.pConserve
+{
+    white-space: pre-wrap;
+}
+
 @media (max-width: variables.$valeurPxPtitFormat) //mobile
 {
     p

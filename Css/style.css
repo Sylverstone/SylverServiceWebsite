@@ -355,7 +355,7 @@ main h2 {
   position: relative;
 }
 
-.plusGros {
+h3 {
   font-size: 1.3em;
 }
 
@@ -404,9 +404,9 @@ main h2 {
   justify-content: center;
   align-items: center;
 }
-.langages div:not([class]) p {
+.langages div:not([class]) section, .langages div:not([class]) p {
   font-family: "Titillium Web";
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin: 1em;
 }
 
@@ -429,11 +429,14 @@ main h2 {
   .langages aside img {
     width: 3em;
   }
-  .plusGros {
-    font-size: 1.2em;
-  }
   .logoSylverService {
     width: 2em;
+  }
+  .langages p {
+    font-size: 0.5em !important;
+  }
+  .contenuTechnique {
+    margin-left: 1em;
   }
 }
 /*modification des elements par défaut*/
@@ -471,6 +474,10 @@ img {
   min-height: 98%;
   height: 98%;
   overflow-x: hidden;
+}
+
+.pConserve {
+  white-space: pre-wrap;
 }
 
 @media (max-width: 900px) {

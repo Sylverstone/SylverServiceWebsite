@@ -1,88 +1,43 @@
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import sendmail from './Scripts/sendMail.js';
 import fs from 'fs';
-
-
+import { texts } from './Scripts/text.js';
+import {footer, header, pageToTextId, pages, __dirname} from './Scripts/variables.js';
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-export const  __dirname = path.dirname(__filename);
 
-const loadTemplate = (filePath) => {
-    return fs.readFileSync(path.join(__dirname, filePath), 'utf-8');
-};
 
-console.log(__dirname);
 app.use('/Css', express.static(path.join(__dirname, '/Css')));
 app.use('/Scripts', express.static(path.join(__dirname, '/Scripts')));
 app.use('/Images', express.static(path.join(__dirname, '/Images')));
 
-
-const index = loadTemplate("index.html");
-const Technique = loadTemplate(path.join("pages","Techniques.html"));
-const form = loadTemplate(path.join("pages","form.html"));
-
-//pages
-
-const pages =
+const completePage = (url) =>
 {
-    '/index.html' : index,
-    '/pages/form.html' : form,
-    '/pages/Techniques.html' : Technique
-}
-
-const header = 
-`
-<nav class="fixe-nav">
-    <ul class="nav-ul">
-        <li><a class="lien-nav" href="/index.html">Sylver Service</a></li>
-        <li><a class="lien-nav" href="/pages/Techniques.html">Techniques</a></li>
-        <li><a class="lien-nav" href="/pages/form.html">Formulaires</a></li>
-    </ul>
-</nav>
-
-`;
-
-const footer = 
-`
-<footer>
-    <div>
-        <a href="/pages/mentionLegal.html" target="_blank">Mention légales</a>
-        <img src="/Images/justice.png" alt="mention légales" class="footerIMG" clickEvent="false">
-    </div>
-    <div>
-        <a href="https://github.com/Sylverstone/" target="_blank">Mon Github</a>
-        <img src="/Images/github.svg" alt="mention légales" class="footerIMG" clickEvent="false">
-    </div>
-    <div>
-        <a href="https://www.linkedin.com/in/sylviopelagemaxime/" target="_blank">Mon LinkedIn</a>
-        <img src="/Images/Icon_linkedin.png" alt="mention légales" class="footerIMG" clickEvent="false">
-    </div>  
-    <div>
-        <a href="mailto:SylverService@outlook.fr">Me contacter</a>
-        <img src="/Images/icon_email.png" alt="mention légales" class="footerIMG" clickEvent="false">
-    </div>
-</footer>
-`;
-
-app.get('/', (req, res) => {
-    console.log("have request");
-    let fullPage;
-    fullPage = index.replace('{{header}}', header).replace('{{footer}}', footer);
-    return res.send(fullPage);
-})
-
-Object.keys(pages).forEach(url => {
-    const template = pages[url];
-    console.log("url : ", url);
+    let template = pages[url];
     app.get(url,(req, res) => {
         console.log("user is requesting",url);
-        return res.send(template.replace('{{header}}', header).replace('{{footer}}',footer));
+        template = template.replace('{{header}}', header).replace('{{footer}}',footer);
+        const data = pageToTextId[url];
+        console.log(data);
+        if(data !== undefined)
+        {
+            const nbText = data[1];
+            const idText = data[0];
+            for(let i = 1; i < nbText + 1; i++)
+            {
+                console.log('{{texte'+i+'}}');
+                template = template.replace('{{texte'+i+'}}', texts[idText][i-1]);
+            }
+        }       
+        return res.send(template);
     });
-    
-})
+
+}
+
+Object.keys(pages).forEach(url => 
+    completePage(url)
+);
 
 app.use('/pages', express.static(path.join(__dirname, '/pages')));
 

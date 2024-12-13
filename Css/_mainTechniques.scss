@@ -14,7 +14,7 @@
 
 
 
-.plusGros
+h3
 {
     font-size: 1.3em;
 }
@@ -74,10 +74,10 @@
         justify-content: center;
         align-items: center;
 
-        p
+        section,p
         {
             font-family: variables.$fontTextBase;
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin: 1em;
         }
     }
@@ -117,13 +117,20 @@
 
     }
 
-    .plusGros
-    {
-        font-size: 1.2em;
-    }
+    
 
     .logoSylverService
     {
         width: 2em;
     }
+
+    .langages p 
+    {
+        font-size: 0.5em !important;
+    }
+
+    .contenuTechnique
+{
+    margin-left: 1em;
+}
 }
