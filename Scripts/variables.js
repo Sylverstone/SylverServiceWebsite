@@ -41,7 +41,6 @@ const header =
         <li><a class="lien-nav" href="/pages/form.html">Formulaires</a></li>
     </ul>
 </nav>
-
 `;
 
 const footer = 

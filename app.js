@@ -14,23 +14,21 @@ app.use('/Images', express.static(path.join(__dirname, '/Images')));
 
 const completePage = (url) =>
 {
-    let template = pages[url];
+    const template = pages[url];
+    let renderedTemplate = template;
     app.get(url,(req, res) => {
-        console.log("user is requesting",url);
-        template = template.replace('{{header}}', header).replace('{{footer}}',footer);
+        renderedTemplate = renderedTemplate.replace('{{header}}', header).replace('{{footer}}',footer);
         const data = pageToTextId[url];
-        console.log(data);
         if(data !== undefined)
         {
             const nbText = data[1];
             const idText = data[0];
             for(let i = 1; i < nbText + 1; i++)
             {
-                console.log('{{texte'+i+'}}');
-                template = template.replace('{{texte'+i+'}}', texts[idText][i-1]);
+                renderedTemplate = renderedTemplate.replace('{{texte'+i+'}}', texts[idText][i-1]);
             }
-        }       
-        return res.send(template);
+        }     
+        return res.send(renderedTemplate);
     });
 
 }
@@ -40,7 +38,6 @@ Object.keys(pages).forEach(url =>
 );
 
 app.use('/pages', express.static(path.join(__dirname, '/pages')));
-
 app.get('/getImage', (req, res) => {
 
     fs.readdir(path.join("Images","Sylverservice"), (err,files) =>
@@ -60,7 +57,6 @@ app.get('/getImage', (req, res) => {
 });
 
 app.get('/form', (req, res) => {
-    console.log(req.query);
     if(sendmail(req.query))
     {
         return res.send('<script>alert("Votre formulaires a été envoyé"); window.location.assign("index.html")</script>');
