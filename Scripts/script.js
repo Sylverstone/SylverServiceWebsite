@@ -1,5 +1,7 @@
 
 
+import { transformImage } from "./LoadImage.js";
+
 const go_to = (Element) => {
     const element = document.getElementById(Element);
     const rect = element.getBoundingClientRect();
@@ -33,7 +35,6 @@ const cancel = (origineDisplay,canceller) =>
             enfantUL.forEach(li => li.style.display = "none");
             canceller.className = "canceller-active";
             canceller.setAttribute("src","Images/oeil.png");
-
         }
         else 
         {
@@ -50,6 +51,7 @@ const allCanceller = document.querySelectorAll("[class|='cancel']");
 allCanceller.forEach(
     elt => elt.onclick = () => cancel(elt.getAttribute("valueDisplay"),elt)
 );
+
 const handleClickLi = (element) => {
     if(element instanceof HTMLElement)
     {
@@ -82,3 +84,6 @@ if(mainUl)
         li.onclick = () => go_to(li.className);
     })
 }
+
+const allImage = document.querySelectorAll('img:not([clickEvent="false"])');
+transformImage(allImage);

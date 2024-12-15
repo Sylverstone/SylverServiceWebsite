@@ -25,6 +25,7 @@ const pages =
 
 const pageToTextId = 
 {
+    "/" : [0,3],
     "/index.html" : [0,3],
     "/pages/Techniques.html" : [1,1],
     "/pages/mentionLegal.html" : [2,1]

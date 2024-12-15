@@ -30,21 +30,29 @@ async function loadImage()
     
 }
 
+const transformImage = (result) =>
+{
+
+    const images = result;
+    images.forEach((img) => {
+        if(img instanceof HTMLElement) 
+        {
+            console.log(img)
+            img.onclick = () => window.open(img.getAttribute("src"),'_blank');
+        }
+    })
+}
+
 allImage = loadImage();
 //renvoie une promise car loadImage est une fonctione asynchrone
 if(allImage != undefined)
 {
     allImage.then((result) => {
-        const images = result;
-        images.forEach((img) =>{
-            if(img instanceof HTMLElement)
-            {
-                img.onclick = () => window.open(img.getAttribute("src"),'_blank');
-            }
-        })
+        transformImage(result)
     }).catch((err) => {
         alert("Erreur lors du chargement des images\nErreur : " + err);
     });
     
 }
 
+export {transformImage};

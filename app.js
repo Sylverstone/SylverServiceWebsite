@@ -59,31 +59,6 @@ app.get('/getImage', (req, res) => {
 
 });
 
-/*app.get('/index.html', (req, res) => {
-    console.log("have request");
-    let fullPage;
-    fullPage = index.replace('{{header}}', header).replace('{{footer}}', footer);
-    return res.send(fullPage);
-})
-
-
-
-app.get('/pages/Techniques.html', (req, res) => {
-    console.log("request page techniques");
-    let fullPage;
-    fullPage = Technique.replace('{{header}}', header).replace('{{footer}}', footer);
-    return res.send(fullPage);
-})
-
-app.get('/pages/form.html', (req, res) => {
-    console.log("request page form");
-    let fullPage;
-    fullPage = form.replace('{{header}}', header).replace('{{footer}}', footer);
-    return res.send(fullPage);
-})
-//
-*/
-
 app.get('/form', (req, res) => {
     console.log(req.query);
     if(sendmail(req.query))
