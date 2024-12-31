@@ -69,7 +69,7 @@ export const setupAppUse = (app) =>
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
     app.get('/robots.txt', (req, res) => res.sendFile(path.join(__dirname, 'robots.txt')));
     app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(__dirname, 'sitemap.xml')));
-    app.get('7ce1b11f48bf459286f3d28f4bfc0099.txt', (req,res) => res.sendFile(path.join(__dirname,'7ce1b11f48bf459286f3d28f4bfc0099.txt')))
+    app.get('/7ce1b11f48bf459286f3d28f4bfc0099.txt', (req,res) => res.sendFile(path.join(__dirname,'7ce1b11f48bf459286f3d28f4bfc0099.txt')))
     console.log(path.join(__dirname,'Scripts'))
 }
 
