@@ -1,6 +1,26 @@
 const body = document.querySelector("body");
 
+
+
 const AllElements = body.querySelectorAll(":not(script):not(.footerIMG)");
+
+AllElements.forEach(element => 
+    {
+        if(element instanceof HTMLElement)
+        {
+            element.style.opacity = "0";
+            
+            const computedStyle = window.getComputedStyle(element).transition;
+            if(window.getComputedStyle(element) !== "all")
+            {
+                element.style.transition = `${computedStyle} ease, opacity 1s ease`
+            }
+            else{
+                element.style.transition = "opacity 500ms ease";
+            }
+        }
+    });
+
 
 function isVisible(element)
 {
@@ -14,23 +34,6 @@ function isVisible(element)
     }
 }
 
-AllElements.forEach(element => 
-{
-    if(element instanceof HTMLElement)
-    {
-        element.style.opacity = "0";
-        
-        const computedStyle = window.getComputedStyle(element).transition;
-        if(window.getComputedStyle(element) !== "all")
-        {
-            element.style.transition = `${computedStyle} ease, opacity 1s ease`
-        }
-        else{
-            element.style.transition = "opacity 500ms ease";
-        }
-    }
-});
-
 function lookIfvisible(AllElements)
 {
     AllElements.forEach(element => {
@@ -43,8 +46,6 @@ function lookIfvisible(AllElements)
         }
     })
 }
-
-
 
 body.onscroll = () =>
 {

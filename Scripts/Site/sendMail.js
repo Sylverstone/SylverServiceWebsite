@@ -1,8 +1,8 @@
 
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
 dotenv.config();
-import nodemailer from 'nodemailer';
 
 export default function sendmail(dataForm) {    
     try {

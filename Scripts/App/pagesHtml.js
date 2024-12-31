@@ -1,10 +1,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import __dirname from '../../dirname.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const  __dirname = path.join(path.dirname(__filename),"..");
 const loadTemplate = (filePath) => {
     return fs.readFileSync(path.join(__dirname,filePath), 'utf-8');
 };
@@ -14,21 +12,22 @@ const Technique = loadTemplate(path.join("pages","Techniques.html"));
 const form = loadTemplate(path.join("pages","form.html"));
 const legalMention = loadTemplate(path.join("pages","mentionLegal.html"));
 
-const pages =
+
+let pages =
 {
-    '/' : index,
-    '/index.html' : index,
-    '/pages/form.html' : form,
-    '/pages/Techniques.html' : Technique,
-    '/pages/mentionLegal.html' : legalMention
+    '/' : {"template" : index, "isComplete" : false},
+    '/index.html' : {"template" : index, "isComplete" : false},
+    '/pages/form.html' : {"template" : form, "isComplete" : false},
+    '/pages/Techniques.html' : {"template" : Technique, "isComplete" : false},
+    '/pages/mentionLegal.html' : {"template" : legalMention, "isComplete" : false}
 }
 
 const pageToTextId = 
 {
-    "/" : [0,3],
-    "/index.html" : [0,3],
-    "/pages/Techniques.html" : [1,1],
-    "/pages/mentionLegal.html" : [2,1]
+    "/" : {"idText" : 0, "nombreText" : 3},
+    "/index.html" : {"idText" : 0, "nombreText" : 3},
+    "/pages/Techniques.html" : {"idText" : 1, "nombreText" : 1},
+    "/pages/mentionLegal.html" : {"idText" : 2, "nombreText" : 1}
     
 }
 

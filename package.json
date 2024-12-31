@@ -2,9 +2,15 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.16",
-    "nodemon": "^3.1.9",
     "sass": "^1.81.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "scripts": {
+    "start": "sudo npx nodemon app.js"
+  }
 }

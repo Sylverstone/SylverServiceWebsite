@@ -1,13 +1,27 @@
 
 
-import { transformImage } from "./LoadImage.js";
+const transformImage = (result) =>
+{
+    
+    const images = result;
+    images.forEach((img) => {
+        if(img instanceof HTMLElement) 
+        {
+            img.onclick = () => window.open(img.getAttribute("src"),'_blank');
+        }
+    })
+}
+
+const allImage = document.querySelectorAll('img:not([clickEvent="false"])');
+transformImage(allImage);
+
 
 const go_to = (Element) => {
     const element = document.getElementById(Element);
     const rect = element.getBoundingClientRect();
-    console.log(element.getClientRects(),screen.height)
    
     const asideFlottant = document.querySelector(`.fixe-asideFlottant`)
+    //900 est la taille des tel mobiles utilsé en css
     let offset = screen.width <= 900 ? asideFlottant.getBoundingClientRect().height : 50
     if(asideFlottant instanceof HTMLElement) {
         
@@ -20,9 +34,19 @@ const go_to = (Element) => {
     }
 }
 
-const cancel = (origineDisplay,canceller) =>
+const mainUl = document.querySelector('.main-ul');
+
+if(mainUl)
 {
-    console.log("in",origineDisplay)
+    let allLi2 = mainUl.querySelectorAll('li');
+
+    allLi2.forEach(li => {
+        li.onclick = () => go_to(li.className);
+    })
+}
+
+const cancel = (origineDisplay,canceller) =>
+{    
     const ListeDisplay = ["flex","block","grid","inline-flex","inline-block"];
     const asideFlottant = document.querySelector(`.fixe-asideFlottant`);
     const ul = asideFlottant.querySelector("ul");
@@ -44,13 +68,13 @@ const cancel = (origineDisplay,canceller) =>
             
         }
     }
-    
 }
 
 const allCanceller = document.querySelectorAll("[class|='cancel']");
 allCanceller.forEach(
     elt => elt.onclick = () => cancel(elt.getAttribute("valueDisplay"),elt)
 );
+
 
 const handleClickLi = (element) => {
     if(element instanceof HTMLElement)
@@ -72,18 +96,9 @@ if(NavUl)
         li.onclick = () => handleClickLi(li);
     })
 
-}
+};
 
-const mainUl = document.querySelector('.main-ul');
 
-if(mainUl)
-{
-    let allLi2 = mainUl.querySelectorAll('li');
 
-    allLi2.forEach(li => {
-        li.onclick = () => go_to(li.className);
-    })
-}
 
-const allImage = document.querySelectorAll('img:not([clickEvent="false"])');
-transformImage(allImage);
+
