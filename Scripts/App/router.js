@@ -67,6 +67,8 @@ export const setupAppUse = (app) =>
     app.use('/Images', express.static(path.join(__dirname, 'Images')));
     app.use('/Scripts/App', express.static(path.join(__dirname, 'Scripts','App')));
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
+    app.get('/robots.txt', (req, res) => res.sendFile(path.join(__dirname, 'robots.txt')));
+    app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(__dirname, 'sitemap.xml')));
     console.log(path.join(__dirname,'Scripts'))
 }
 
