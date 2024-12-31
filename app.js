@@ -18,6 +18,7 @@ formRoute(app);
 
 handle404(app);
 
+console.log("testing")
 app.listen(80, () => {
     console.log('Server running on port 80');
 })
