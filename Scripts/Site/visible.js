@@ -7,9 +7,7 @@ const AllElements = body.querySelectorAll(":not(script):not(.footerIMG)");
 AllElements.forEach(element => 
     {
         if(element instanceof HTMLElement)
-        {
-            element.style.opacity = "0";
-            
+        {            
             const computedStyle = window.getComputedStyle(element).transition;
             if(window.getComputedStyle(element) !== "all")
             {

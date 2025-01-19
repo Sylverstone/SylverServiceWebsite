@@ -1,7 +1,5 @@
 import express from 'express';
 import {formRoute,getImageRoute,handle404,setupAppUse, setupSitePageAvailable } from './Scripts/App/router.js';
-import path from 'path'
-
 import __dirname from './dirname.js';
 
 const app = express();

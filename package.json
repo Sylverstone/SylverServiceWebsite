@@ -10,7 +10,9 @@
   "devDependencies": {
     "nodemon": "^3.1.9"
   },
+  "main": "app.js",
   "scripts": {
-    "start": "sudo npx nodemon app.js"
+    "dev": "sudo npx nodemon app.js",
+    "start" : "node ."
   }
 }
