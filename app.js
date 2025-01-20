@@ -1,11 +1,12 @@
 import express from 'express';
-import {formRoute,getImageRoute,handle404,setupAppUse, setupSitePageAvailable } from './Scripts/App/router.js';
+import {formRoute,getImageRoute,handle404,redirectPage,setupAppUse, setupSitePageAvailable } from './Scripts/App/router.js';
 import __dirname from './dirname.js';
 
 const app = express();
 
 setupAppUse(app);
 
+redirectPage(app);
 
 setupSitePageAvailable(app);
 

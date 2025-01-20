@@ -8,8 +8,8 @@ import path from 'path'
 
 const completePage = (app,url) =>
 {
-    
     app.get(url, async (req, res) => {
+        console.log(url)
         const dataPage = pages[url]
         const Origintemplate = dataPage["template"];
         let template;
@@ -51,7 +51,6 @@ const completePage = (app,url) =>
             }
             
         }
-
         else
         {
             template = Origintemplate;
@@ -61,6 +60,7 @@ const completePage = (app,url) =>
 
     });
 }
+
 export const setupAppUse = (app) => 
 {
     app.use('/Css', express.static(path.join(__dirname, 'Css')));
@@ -113,6 +113,20 @@ export const handle404 = app =>
     })
 }
 
+export const redirectPage = app =>
+{
+    app.use((req,res,next) => {
+        if(req.url.endsWith('/index.html'))
+        {
+            console.log("redirection")
+            res.redirect(301, req.url.replace('/index.html','/'));
+        }
+        else
+        {
+            next();
+        }
+    })
+}
 export const setupSitePageAvailable = app =>
 {
     Object.keys(pages).forEach(url => 
