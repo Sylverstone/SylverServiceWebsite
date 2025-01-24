@@ -5,6 +5,7 @@ import express from 'express';
 import fs from 'fs';
 import __dirname from '../../dirname.js';
 import path from 'path'
+import sendmail from '../Site/sendMail.js';
 
 const completePage = (app,url) =>
 {
