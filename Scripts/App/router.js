@@ -71,6 +71,7 @@ export const setupAppUse = (app) =>
     app.get('/robots.txt', (req, res) => res.sendFile(path.join(__dirname, 'robots.txt')));
     app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(__dirname, 'sitemap.xml')));
     app.get('/7ce1b11f48bf459286f3d28f4bfc0099.txt', (req,res) => res.sendFile(path.join(__dirname,'7ce1b11f48bf459286f3d28f4bfc0099.txt')))
+    app.get('/googleec111dafdd73fd90.html',(req,res) => res.sendFile(path.join(__dirname,'/googleec111dafdd73fd90.html')))
     console.log(path.join(__dirname,'Scripts'))
 }
 
