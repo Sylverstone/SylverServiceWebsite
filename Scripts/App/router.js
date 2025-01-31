@@ -70,8 +70,10 @@ export const setupAppUse = (app) =>
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
     app.get('/robots.txt', (req, res) => res.sendFile(path.join(__dirname, 'robots.txt')));
     app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(__dirname, 'sitemap.xml')));
-    app.get('/fd2be3d8999f4f47bfab5fa66fac78cd.txt', (req,res) => res.sendFile(path.join(__dirname,'fd2be3d8999f4f47bfab5fa66fac78cd.txt')))
-    app.get('/googleec111dafdd73fd90.html',(req,res) => res.sendFile(path.join(__dirname,'/googleec111dafdd73fd90.html')))
+    app.get('/fd2be3d8999f4f47bfab5fa66fac78cd.txt', (req,res) => res.sendFile(path.join(__dirname,'fd2be3d8999f4f47bfab5fa66fac78cd.txt')));
+    app.get('/googleec111dafdd73fd90.html',(req,res) => res.sendFile(path.join(__dirname,'/googleec111dafdd73fd90.html')));
+    app.get('/favicon.ico',(req,res) => res.sendFile(path.join(__dirname,'/favicon.ico')));
+    
     console.log(path.join(__dirname,'Scripts'))
 }
 
