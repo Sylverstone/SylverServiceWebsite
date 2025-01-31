@@ -19,7 +19,7 @@ function indexNow()
         const filteredFile = files.map(value => {
             if(i === 0 && value === "index.html")
             {
-                value = "/";
+                value = "";
             }
             return new URL(path.join(relatifZone[i], value), "https://sylverservice.up.railway.app").toString()
 

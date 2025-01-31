@@ -8,12 +8,12 @@
   },
   "type": "module",
   "devDependencies": {
+    "axios": "^1.7.9",
     "nodemon": "^3.1.9"
   },
   "main": "app.js",
   "scripts": {
     "dev": "sudo npx nodemon app.js",
     "start": "node ."
-  },
-  "packageManager": "pnpm@9.15.4+sha1.ffa0b5c573381e8035b354028ccff97c8e452047"
+  }
 }
