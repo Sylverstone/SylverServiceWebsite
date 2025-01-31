@@ -66,7 +66,6 @@ L'application Sylverservice est disponible sur son <a href = "https://github.com
 `
 <strong>Propriétaire</strong> du site :
 PELAGE Maxime Sylvio
-21 bis, rue Jean Solvain
 43000 Le Puy-en-Velay
 <strong>Contact</strong> : sylvio8.pm@gmail.com
 
