@@ -2,9 +2,7 @@ import axios from "axios";
 import fs from 'fs'
 import __dirname from "../dirname.js";
 import path from "path";
-import dotenv from "dotenv";
-
-dotenv.config();
+import "dotenv/config"
 
 const zoneRecherche = [__dirname,path.join(__dirname,"pages")]
 const relatifZone = ["/", "/pages"]
@@ -41,7 +39,7 @@ function indexNow()
             'Content-Type': 'application/json; charset=utf-8'
         }
     })
-    .then(response => console.log(response))
+    .then(response => console.log(response.status, response.statusText))
     .catch(error => console.log(error));
 }
 
