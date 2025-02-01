@@ -68,15 +68,18 @@ export const setupAppUse = (app) =>
     app.use('/Images', express.static(path.join(__dirname, 'Images')));
     app.use('/Scripts/App', express.static(path.join(__dirname, 'Scripts','App')));
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
-    app.get('/robots.txt', (req, res) => res.sendFile(path.join(__dirname, 'robots.txt')));
-    app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(__dirname, 'sitemap.xml')));
-    app.get('/fd2be3d8999f4f47bfab5fa66fac78cd.txt', (req,res) => res.sendFile(path.join(__dirname,'fd2be3d8999f4f47bfab5fa66fac78cd.txt')));
-    app.get('/googleec111dafdd73fd90.html',(req,res) => res.sendFile(path.join(__dirname,'/googleec111dafdd73fd90.html')));
-    app.get('/favicon.ico',(req,res) => res.sendFile(path.join(__dirname,'/favicon.ico')));
-    app.get('/favicon-32x32.png',(req,res) => res.sendFile(path.join(__dirname,'/favicon-32x32.png')));
-    app.get('/favicon.ico',(req,res) => res.sendFile(path.join(__dirname,'/favicon.ico')));
-    app.get('/favicon-16x16.png',(req,res) => res.sendFile(path.join(__dirname,'/favicon-16x16.png')));
-    console.log(path.join(__dirname,'Scripts'))
+    
+    const icons = fs.readdirSync(path.join(__dirname,"favicon")).filter(icon => icon.startsWith('favicon'));
+    console.table(icons);
+    icons.forEach(icon => {
+        app.get(`/${icon}`,(req,res) => res.sendFile(path.join(__dirname,"favicon",`${icon}`)));
+    })
+    const publicFiles = fs.readdirSync(path.join(__dirname,'public'));
+    console.table(publicFiles);
+    publicFiles.forEach(file => {
+        app.get(`/${file}`,(req,res) => res.sendFile(path.join(__dirname,'public',`${file}`)));
+    })
+   
 }
 
 export const getImageRoute = (app) =>
