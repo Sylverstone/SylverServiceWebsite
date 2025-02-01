@@ -73,7 +73,9 @@ export const setupAppUse = (app) =>
     app.get('/fd2be3d8999f4f47bfab5fa66fac78cd.txt', (req,res) => res.sendFile(path.join(__dirname,'fd2be3d8999f4f47bfab5fa66fac78cd.txt')));
     app.get('/googleec111dafdd73fd90.html',(req,res) => res.sendFile(path.join(__dirname,'/googleec111dafdd73fd90.html')));
     app.get('/favicon.ico',(req,res) => res.sendFile(path.join(__dirname,'/favicon.ico')));
-    
+    app.get('/favicon-32x32.png',(req,res) => res.sendFile(path.join(__dirname,'/favicon-32x32.png')));
+    app.get('/favicon.ico',(req,res) => res.sendFile(path.join(__dirname,'/favicon.ico')));
+    app.get('/favicon-16x16.png',(req,res) => res.sendFile(path.join(__dirname,'/favicon-16x16.png')));
     console.log(path.join(__dirname,'Scripts'))
 }
 
