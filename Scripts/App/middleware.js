@@ -21,7 +21,7 @@ export const middleware = async(req, res, next) => {
         const temp_lang = req.acceptsLanguages(langue_dispos) || defaultValue;
         res.cookie("lang", temp_lang, {
             httpOnly: true, // Cookie uniquement accessible par le serveur
-            secure: process.env.NODE_ENV === 'production', // HTTPS en production
+            secure: process.env.ENV === 'production', // HTTPS en production
             maxAge: 3600 * 24 * 60 * 1000, // Expire après 60 jours
             sameSite: 'lax' // Cookie envoyé pour les requêtes du même site
         });
@@ -35,7 +35,7 @@ export const middleware = async(req, res, next) => {
             {
                 res.cookie("lang", req.url.slice(1,3), {
                     httpOnly: true, // Cookie uniquement accessible par le serveur
-                    secure: process.env.NODE_ENV === 'production', // HTTPS en production
+                    secure: process.env.ENV === 'production', // HTTPS en production
                     maxAge: 3600 * 24 * 60 * 1000, // Expire après 60 jours
                     sameSite: 'lax' // Cookie envoyé pour les requêtes du même site
                 });
