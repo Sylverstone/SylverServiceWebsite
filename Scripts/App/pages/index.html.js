@@ -1,6 +1,9 @@
+import fetch from "node-fetch";
+
 async function setup_accueil(template,lang,pages){
 
-    const response = await fetch("https://sylverservice.up.railway.app/getImage");
+    const urlBase = process.env.URL;
+    const response = await fetch(`${urlBase}api/getImage`);
     const images_path = await response.json();
     let Imageshtml = "";
     Imageshtml += "<aside id=\"ImagesSylverservice\">";
@@ -13,7 +16,7 @@ async function setup_accueil(template,lang,pages){
     Imageshtml += "\n</aside>"
     template = template.replace("{{images}}", Imageshtml)
     pages['/:lang'] = {"template" : template, "isComplete" : true, "lang" : lang}
-    
+
     return template
 
 }

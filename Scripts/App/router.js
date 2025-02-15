@@ -105,7 +105,7 @@ export const setupAppUse = (app) =>
 
 export const getImageRoute = (app) =>
 {
-    app.get('/getImage', (req, res) => {
+    app.get('/api/getImage', (req, res) => {
 
         console.log("in there")
         fs.readdir(path.join("Images","Sylverservice"), (err,files) =>
@@ -126,7 +126,7 @@ export const getImageRoute = (app) =>
     
 export const formRoute = (app) =>
 {
-    app.get('/form', (req, res) => {
+    app.get('/api/form', (req, res) => {
         console.log(req.query);
         if(sendmail(req.query))
         {

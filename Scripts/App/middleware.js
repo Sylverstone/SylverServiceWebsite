@@ -7,6 +7,7 @@ const handleReqWithNoRedirect = (url) => {
     return !(
         langue_dispos.some((langue_dispo) => url.startsWith(`/${langue_dispo}/`) || url.startsWith(`${langue_dispo}/`) || url === `${langue_dispo}`) ||
         extension_interdit.some((ext) => url.endsWith(ext))
+        || url.startsWith("/api/")
     );
 };
 
@@ -26,7 +27,7 @@ export const middleware = async(req, res, next) => {
             sameSite: 'lax' // Cookie envoyé pour les requêtes du même site
         });
     }
-
+    
     let lang = req.cookies.lang || defaultValue;
 
     if (!handleReqWithNoRedirect(req.url)) {
