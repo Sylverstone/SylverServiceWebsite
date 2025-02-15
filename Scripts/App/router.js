@@ -8,11 +8,16 @@ import { getTraduction } from './getText.js';
 import setup_accueil from "./pages/index.html.js"
 import { displayToStatic } from './displayToStatic.js';
 
+const element_commun = {
+    "{{title}}" : "header_title",
+    "{{page_title}}" : "page_title"
+};
 const completePage = (app,url) =>
 {
     app.get(url, async (req, res) => {
         
         const lang = req.params.lang;
+        console.log(lang);
         const dataPage = pages[url];
         let Origintemplate = dataPage["template"];
         let template;
@@ -22,7 +27,6 @@ const completePage = (app,url) =>
         {
             //origin template est passé au template par défaut, celui-ci n'est jamais changé (il faut mettre en place ce système pour le cas d'un changement de langue)
             Origintemplate = originTemplatePage[url]["template"];
-            console.log("page :",url, "is loading");
             template = Origintemplate.replace('{{header}}', header).replace('{{footer}}',footer);
             const data = pageToTextId[url];
             if(data !== undefined)
@@ -34,10 +38,14 @@ const completePage = (app,url) =>
                     template = template.replace('{{texte'+i+'}}', text_traduit[url]["texte_i"][i-1]);
                 }
             }       
+            //set les elements commun des pages (titre d'onglet, h1 de pages,...)
+            Object.keys(element_commun).forEach(key => {
+                template = template.replace(key, text_traduit[url][element_commun[key]]);
+            })
 
             if(url == "/:lang")
             {
-                template = template.replace('{{title}}',text_traduit[url]["header_title"])
+               
                 template = await setup_accueil(template,lang,pages);
             }
             
@@ -50,7 +58,6 @@ const completePage = (app,url) =>
         else
         {
             template = Origintemplate;
-            console.log("page :",url, "is already loaded");
         }
         return res.send(template);
 
@@ -61,7 +68,6 @@ export const setupAppUse = (app) =>
 {
     //app.use('/Css', express.static(path.join(__dirname, 'Css')));
     const cssFile = fs.readdirSync(path.join(__dirname,"Css"));
-    console.table(cssFile);
     cssFile.forEach(file => {
         if(process.env.ENV === 'development')
         {
@@ -91,10 +97,8 @@ export const setupAppUse = (app) =>
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
     
     const icons = fs.readdirSync(path.join(__dirname,"favicon")).filter(icon => icon.startsWith('favicon'));
-    console.table(icons);
     displayToStatic(app,icons,"favicon");
     const publicFiles = fs.readdirSync(path.join(__dirname,'public'));
-    console.table(publicFiles);
     displayToStatic(app,publicFiles,"public");
    
 }
@@ -141,17 +145,7 @@ export const handle404 = app =>
 
 export const redirectPage = app =>
 {
-    app.use((req,res,next) => {
-        if(req.url.endsWith('/index.html'))
-        {
-            console.log("redirection")
-            res.redirect(301, req.url.replace('/index.html','/'));
-        }
-        else
-        {
-            next();
-        }
-    })
+
 }
 export const setupSitePageAvailable = app =>
 {

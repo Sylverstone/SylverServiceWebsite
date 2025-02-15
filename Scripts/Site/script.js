@@ -79,9 +79,10 @@ allCanceller.forEach(
 const handleClickLi = (element) => {
     if(element instanceof HTMLElement)
     {
-        const firstChild = element.firstChild;
-        const href = firstChild.getAttribute('href');
-        window.location.assign(href);
+        const link = element.querySelector("a");
+        if(!(link instanceof HTMLElement)) return;
+        window.location.assign(link.getAttribute('href'));
+        
     }
     return "bug";
     

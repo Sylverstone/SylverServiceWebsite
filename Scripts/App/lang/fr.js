@@ -23,10 +23,11 @@ L'application <strong>SylverService</strong> comporte déjà pas mal de <strong>
 Ici vous trouverez un aperçu de l'application SylverService, je vous laisse en découvrir plus en téléchargeant l'application ou dans la page Technique :)
 `
                     ],
-        "header_title" : "Sylver Service : Vos élèves n'auront jamais été aussi soudés"
+        "header_title" : "Sylver Service : Vos élèves n'auront jamais été aussi soudés",
+        "page_title" : "Sylver Service"
     },
 
-    "/:lang/pages/Techniques.html" :{
+    "/:lang/pages/Techniques.html" : {
         "texte_i" : 
     [
 `
@@ -64,7 +65,9 @@ Cette page peut aussi comporter des sondages/questions destinés aux utilisateur
 
 L'application Sylverservice est disponible sur son <a href = "https://github.com/Sylverstone/Sylver_Service" target="_blank"><strong>GitHub</strong></a>.</p>
 `
-    ]
+    ],
+        "header_title" : "Comment Sylver Service à été codé",
+        "page_title" : "Aspects techniques SylverService"
     },
     "/:lang/pages/mentionLegal" : {
         "texte_i" :
@@ -98,7 +101,15 @@ Les données collectées sont protégées et ne sont accessibles qu’au propri�
 Contact :
 Pour toute question relative au site ou à l’application SylverService, veuillez utiliser l’adresse email de contact.
 `
-    ]
+    ],
+        "header_title" : "Mentions légales",
+        "page_title" : "mention legal"
+    },
+    "/:lang/pages/form.html":
+    {
+        "texte_i" : undefined,
+        "header_title" : "Collaborons ensemble",
+        "page_title" : "Formulaire de contact"
     }
 };
 
