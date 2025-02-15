@@ -78,7 +78,7 @@ export const setupAppUse = (app) =>
             //ne pas rendre les .map en prod
             if(file.endsWith(".css"))
             {
-                app.get(path.join(__dirname,"Css",`${file}`),(req,res) => res.sendFile(path.join(__dirname,"Css",`${file}`)));
+                app.get(`/Css/${file}`,(req,res) => res.sendFile(path.join(__dirname,"Css",`${file}`)));
             }
         }
        
