@@ -1,4 +1,4 @@
-import {footer, header, originTemplatePage, pageToTextId, pages} from './pagesHtml.js';
+import {footer, header, originTemplatePage, pageToTextId, pages,changeLangue} from './pagesHtml.js';
 import express from 'express';
 import fs from 'fs';
 import __dirname from '../../dirname.js';
@@ -7,17 +7,19 @@ import sendmail from '../Site/sendMail.js';
 import { getTraduction } from './getText.js';
 import setup_accueil from "./pages/index.html.js"
 import { displayToStatic } from './displayToStatic.js';
+import { print } from './devFonction.js';
 
 const element_commun = {
     "{{title}}" : "header_title",
-    "{{page_title}}" : "page_title"
+    "{{page_title}}" : "page_title",
 };
+
 const completePage = (app,url) =>
 {
     app.get(url, async (req, res) => {
         
         const lang = req.params.lang;
-        console.log(lang);
+        print(lang);
         const dataPage = pages[url];
         let Origintemplate = dataPage["template"];
         let template;
@@ -27,7 +29,7 @@ const completePage = (app,url) =>
         {
             //origin template est passé au template par défaut, celui-ci n'est jamais changé (il faut mettre en place ce système pour le cas d'un changement de langue)
             Origintemplate = originTemplatePage[url]["template"];
-            template = Origintemplate.replace('{{header}}', header).replace('{{footer}}',footer);
+            template = Origintemplate.replace('{{header}}', header).replace('{{footer}}',footer).replace('{{langue}}',changeLangue)
             const data = pageToTextId[url];
             if(data !== undefined)
             {
@@ -42,6 +44,7 @@ const completePage = (app,url) =>
             Object.keys(element_commun).forEach(key => {
                 template = template.replace(key, text_traduit[url][element_commun[key]]);
             })
+
 
             if(url == "/:lang")
             {
@@ -83,15 +86,11 @@ export const setupAppUse = (app) =>
         }
        
     })
-    //ne pas rendre les .scss en prod
     if(process.env.ENV === 'development')
     {
         app.use('/SCSS', express.static(path.join(__dirname, 'SCSS')));
     }
     app.use('/partial',express.static(path.join(__dirname, 'partial')));
-    //const partials = fs.readdirSync(path.join(__dirname,"partial"));
-    //console.table(partials);
-    //displayToStatic(app,partials,"partial");
     app.use('/Images', express.static(path.join(__dirname, 'Images')));
     app.use('/Scripts/App', express.static(path.join(__dirname, 'Scripts','App')));
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
@@ -107,7 +106,6 @@ export const getImageRoute = (app) =>
 {
     app.get('/api/getImage', (req, res) => {
 
-        console.log("in there")
         fs.readdir(path.join("Images","Sylverservice"), (err,files) =>
         {
             if(err)
@@ -127,13 +125,34 @@ export const getImageRoute = (app) =>
 export const formRoute = (app) =>
 {
     app.get('/api/form', (req, res) => {
-        console.log(req.query);
+        print(req.query);
         if(sendmail(req.query))
         {
             return res.send('<script>alert("Votre formulaires a été envoyé"); window.location.assign("index.html")</script>');
         }
         return res.send('<script>alert("Une erreur a eu lieu :( ); window.location.assign("index.html")</script>')
     });
+}
+
+const listToString = (list,separator = "/") => {
+    let string = "";
+    list.forEach(element => {
+        if(element !== "")
+            string += element + separator;
+    });
+    return string
+}
+    
+export const changeLangue_api = app => 
+{
+    app.get("/api/change-langue/:lang", (req, res) => {
+        const referrer = req.get("Referrer");
+        let listCible = referrer.split("/").slice(3);
+        listCible[0] = req.params.lang;
+        const final_req = listToString(listCible);
+        print(`finalList : ${final_req}`);
+        return res.redirect(301,`/${final_req}`);
+    })
 }
 
 export const handle404 = app => 
@@ -143,10 +162,6 @@ export const handle404 = app =>
     })
 }
 
-export const redirectPage = app =>
-{
-
-}
 export const setupSitePageAvailable = app =>
 {
     Object.keys(pages).forEach(url => 

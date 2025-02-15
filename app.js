@@ -1,29 +1,36 @@
 import express from 'express';
-import {formRoute,getImageRoute,handle404,redirectPage,setupAppUse, setupSitePageAvailable } from './Scripts/App/router.js';
+import {changeLangue_api, formRoute,getImageRoute,handle404,setupAppUse, setupSitePageAvailable } from './Scripts/App/router.js';
 import __dirname from './dirname.js';
 import { middleware } from './Scripts/App/middleware.js';
 import dotenv from "dotenv";
 import cookieParser from 'cookie-parser';
+
 dotenv.config()
 const app = express();
+app.disable('etag');
 
-app.use(cookieParser(process.env.SECRET))
+app.use((req, res, next) => {
+    // Autorise le cache MAIS invalide-le quand la langue change
+    res.set({
+        'Cache-Control': 'private, no-cache, max-age=0',
+        'Vary': 'Cookie' // 🔥 Indique que le contenu varie selon les cookies
+    });
+    next();
+})
+
+app.use(cookieParser())
 
 app.use(middleware)
 
 setupAppUse(app);
 
-redirectPage(app);
-
 setupSitePageAvailable(app);
 
 getImageRoute(app);
 
-app.get("/lang-cookie",(req,res) => {
-    console.log(res.cookie());
-    return res.redirect(req.url);
-})
 formRoute(app);
+
+changeLangue_api(app);
 
 handle404(app);
 app.listen(80, () => {

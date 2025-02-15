@@ -12,6 +12,8 @@ $widthRadioBox : 1.6em;
     margin: 0;
 }
 
+@include variables.changeLangue();
+
 form
 {
     color: variables.$colorFour;

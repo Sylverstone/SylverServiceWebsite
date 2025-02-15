@@ -17,6 +17,8 @@ img
     cursor: pointer;
 }
 
+@include variables.changeLangue();
+
 .full-Body
 {
  

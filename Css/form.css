@@ -96,8 +96,15 @@ li a, li {
   display: flex;
   justify-content: center;
   position: relative; /*pour les pseudos-elements after et before*/
+  width: 100%;
+  height: 100%;
+  align-items: center;
 }
-.lien-nav::after {
+.lien-nav span {
+  position: absolute;
+  color: transparent;
+}
+.lien-nav span::after {
   content: " ";
   position: absolute;
   border-bottom: 0.1em solid transparent;
@@ -107,13 +114,7 @@ li a, li {
   width: 0;
   transition: width 800ms ease, border-color 500ms ease-out;
 }
-.lien-nav:hover::after {
-  left: 0;
-  border-color: rgb(33, 33, 33);
-  width: 100%;
-}
-
-li:hover .lien-nav::after {
+.lien-nav:hover span::after {
   left: 0;
   border-color: rgb(33, 33, 33);
   width: 100%;
@@ -132,6 +133,17 @@ li:hover .lien-nav::after {
 }
 * {
   margin: 0;
+}
+
+.changeLangue {
+  top: 1em;
+  position: fixed;
+  color: wheat;
+  cursor: pointer;
+}
+.changeLangue img {
+  filter: drop-shadow(0.1em 0.1em 0.1em black);
+  width: clamp(1.2em, 3vw, 3em);
 }
 
 form {

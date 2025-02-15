@@ -39,4 +39,6 @@ const header = loadTemplate(path.join("partial","header.html"));
 
 const footer = loadTemplate(path.join("partial","footer.html"));
 
-export {footer, header, pageToTextId, pages, index,__dirname,originTemplatePage};
+const changeLangue = loadTemplate(path.join("partial","changeLangue.html"));
+
+export {footer, header, pageToTextId, pages, index,__dirname,originTemplatePage,changeLangue};

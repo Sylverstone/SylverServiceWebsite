@@ -2,7 +2,7 @@ let texts = {
     "/:lang" : {
         "texte_i" : [
 `
-<strong>MDR</strong> est à l'origine une application qui a été développé pour les <strong>trophées NSI de 2024</strong>. Celle-ci a d'ailleurs été récompensé au trophée NSI departmental de Guadeloupe.
+<strong>SylverService</strong> est à l'origine une application qui a été développé pour les <strong>trophées NSI de 2024</strong>. Celle-ci a d'ailleurs été récompensé au trophée NSI departmental de Guadeloupe.
 Alors <strong>a quoi sert SylverService ?</strong> C'est une application dédiée au élève, voir même des particuliers, pour que ceux-ci puissent <strong>s'entre-aider, de s'ameliorer</strong> afin d'atteindre leur object.
 Nous avons décidez de mener ce projet car nous étions en <strong>période d'examen</strong> et trouvions cette idée intéréssante car de nombreux élèves comprennent mieux certaines notions quand se sont d'autres étudiants qui leur explique.
 
@@ -70,13 +70,12 @@ L'application Sylverservice est disponible sur son <a href = "https://github.com
         "header_title" : "How Sylver Service was coded ?",
         "page_title" : "Technical aspects of Sylver Service"
     },
-    "/:lang/pages/mentionLegal" : {
+    "/:lang/pages/mentionLegal.html" : {
         "texte_i" :
     [
 `
 <strong>Propriétaire</strong> du site :
 PELAGE Maxime Sylvio
-43000 Le Puy-en-Velay
 <strong>Contact</strong> : sylvio8.pm@gmail.com
 
 <strong>Objet</strong> du site :

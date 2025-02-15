@@ -15,7 +15,7 @@
   },
   "main": "app.js",
   "scripts": {
-    "dev": "npx nodemon app.js",
+    "dev": "npx nodemon --ext js,html,css .",
     "start": "node ."
   }
 }

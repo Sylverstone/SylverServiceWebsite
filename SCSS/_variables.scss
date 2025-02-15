@@ -15,6 +15,7 @@ $valeurPxPtitFormat : 900px;
 $tailleIMGSylverService : 30em;
 $couleurArrierePlanInput : rgba(0,0,0,.4);
 $divideFactorImageFooter : 1.4;
+$widthImg : clamp(1.2em,3vw,3em);
 
 /*MIXIN*/
 @mixin flexColumn()
@@ -66,3 +67,23 @@ $divideFactorImageFooter : 1.4;
     text-shadow: $attr $colorShadow;
 }
 
+@mixin dropShadow()
+{
+    filter: drop-shadow(.1em .1em .1em black);
+}
+
+@mixin changeLangue
+{
+    .changeLangue
+    {
+        top: 1em;
+        position: fixed;
+        color: wheat;
+        cursor: pointer;
+        img 
+        {
+            @include dropShadow();
+            width: $widthImg;
+        }
+    }
+}

@@ -58,13 +58,13 @@ const cancel = (origineDisplay,canceller) =>
         {
             enfantUL.forEach(li => li.style.display = "none");
             canceller.className = "canceller-active";
-            canceller.setAttribute("src","Images/oeil.png");
+            canceller.setAttribute("src","/Images/oeil.png");
         }
         else 
         {
             enfantUL.forEach(li => li.style.display = `${origineDisplay}`);
             canceller.className = "cancel-aside";
-            canceller.setAttribute("src","Images/croix.png");
+            canceller.setAttribute("src","/Images/croix.png");
             
         }
     }
@@ -74,30 +74,6 @@ const allCanceller = document.querySelectorAll("[class|='cancel']");
 allCanceller.forEach(
     elt => elt.onclick = () => cancel(elt.getAttribute("valueDisplay"),elt)
 );
-
-
-const handleClickLi = (element) => {
-    if(element instanceof HTMLElement)
-    {
-        const link = element.querySelector("a");
-        if(!(link instanceof HTMLElement)) return;
-        window.location.assign(link.getAttribute('href'));
-        
-    }
-    return "bug";
-    
-}
-
-const NavUl = document.querySelector('.nav-ul');
-
-if(NavUl)
-{
-    let allLi = NavUl.querySelectorAll('li');
-    allLi.forEach(li => {
-        li.onclick = () => handleClickLi(li);
-    })
-
-};
 
 
 
