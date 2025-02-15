@@ -7,11 +7,12 @@ main
     align-items: stretch;
     margin-left: 2em;
     margin-right: 2em;
+    flex-wrap: wrap;
     > * 
     {
         margin-top: 1em;
     }
-    flex-wrap: wrap;
+    
 }
 
 main h2
@@ -54,8 +55,6 @@ main h2
     background-color : none;
     border-radius : 0;
 }
-
-
 
 .main-ul
 {

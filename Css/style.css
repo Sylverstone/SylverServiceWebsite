@@ -149,7 +149,6 @@ footer div a {
   display: block;
   font-family: "Barlow", sans-serif;
   font-size: 1em;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 2em !important;
   border-radius: 2em;
@@ -321,7 +320,6 @@ main h2 {
     width: 100%;
     margin-right: 0;
     display: flex;
-    height: -moz-fit-content;
     height: fit-content;
     align-items: center;
     justify-content: center;
@@ -487,4 +485,6 @@ img {
   h2 {
     font-size: 1em !important;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

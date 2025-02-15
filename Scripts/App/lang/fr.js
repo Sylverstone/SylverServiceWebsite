@@ -1,8 +1,6 @@
-
-//Ce texte regroupe tout les textes fait avec une mise en forme particulière, si ceux-ci était directement fait en html cela n'aurait pas été esthétique
-
-let texts = [
-    [
+let texts = {
+    "/:lang" : {
+        "texte_i" : [
 `
 <strong>SylverService</strong> est à l'origine une application qui a été développé pour les <strong>trophées NSI de 2024</strong>. Celle-ci a d'ailleurs été récompensé au trophée NSI departmental de Guadeloupe.
 Alors <strong>a quoi sert SylverService ?</strong> C'est une application dédiée au élève, voir même des particuliers, pour que ceux-ci puissent <strong>s'entre-aider, de s'ameliorer</strong> afin d'atteindre leur object.
@@ -24,7 +22,12 @@ L'application <strong>SylverService</strong> comporte déjà pas mal de <strong>
 
 Ici vous trouverez un aperçu de l'application SylverService, je vous laisse en découvrir plus en téléchargeant l'application ou dans la page Technique :)
 `
-    ],
+                    ],
+        "header_title" : "Sylver Service : Vos élèves n'auront jamais été aussi soudés"
+    },
+
+    "/:lang/pages/Techniques.html" :{
+        "texte_i" : 
     [
 `
 <p>
@@ -61,7 +64,10 @@ Cette page peut aussi comporter des sondages/questions destinés aux utilisateur
 
 L'application Sylverservice est disponible sur son <a href = "https://github.com/Sylverstone/Sylver_Service" target="_blank"><strong>GitHub</strong></a>.</p>
 `
-    ],
+    ]
+    },
+    "/:lang/pages/mentionLegal" : {
+        "texte_i" :
     [
 `
 <strong>Propriétaire</strong> du site :
@@ -93,9 +99,7 @@ Contact :
 Pour toute question relative au site ou à l’application SylverService, veuillez utiliser l’adresse email de contact.
 `
     ]
+    }
+};
 
-];
-
-export {texts};
-
-
+export default texts;

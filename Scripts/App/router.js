@@ -1,61 +1,56 @@
-import { texts } from '../Site/text.js';
-import {footer, header, pageToTextId, pages} from './pagesHtml.js';
-import fetch from 'node-fetch';
+import {footer, header, originTemplatePage, pageToTextId, pages} from './pagesHtml.js';
 import express from 'express';
 import fs from 'fs';
 import __dirname from '../../dirname.js';
 import path from 'path'
 import sendmail from '../Site/sendMail.js';
+import { getTraduction } from './getText.js';
+import setup_accueil from "./pages/index.html.js"
+import { displayToStatic } from './displayToStatic.js';
 
 const completePage = (app,url) =>
 {
     app.get(url, async (req, res) => {
-        console.log(url)
-        const dataPage = pages[url]
-        const Origintemplate = dataPage["template"];
+        
+        const lang = req.params.lang;
+        const dataPage = pages[url];
+        let Origintemplate = dataPage["template"];
         let template;
-        if(dataPage["isComplete"] === false)
+        const text_traduit = await getTraduction(lang);
+
+        if(dataPage["isComplete"] === false || dataPage["lang"] != lang)
         {
-            console.log("charging")
+            //origin template est passé au template par défaut, celui-ci n'est jamais changé (il faut mettre en place ce système pour le cas d'un changement de langue)
+            Origintemplate = originTemplatePage[url]["template"];
+            console.log("page :",url, "is loading");
             template = Origintemplate.replace('{{header}}', header).replace('{{footer}}',footer);
             const data = pageToTextId[url];
             if(data !== undefined)
             {
                 const nbText = data["nombreText"];
-                const idText = data["idText"];
+                //const idText = data["idText"];
                 for(let i = 1; i < nbText + 1; i++)
                 {
-                    template = template.replace('{{texte'+i+'}}', texts[idText][i-1]);
+                    template = template.replace('{{texte'+i+'}}', text_traduit[url]["texte_i"][i-1]);
                 }
             }       
-            if(url == "/" || url == "/index.html")
+
+            if(url == "/:lang")
             {
-                const response = await fetch("https://sylverservice.up.railway.app/getImage");
-                const images = await response.json();
-                let Imageshtml = "";
-                Imageshtml += "<aside id=\"ImagesSylverservice\">";
-                const BaseElementImage = "<img src=\"{{src}}\" alt=\"Images de l'application\">";
-                let elementImage;
-                images.forEach(image => {
-                    elementImage = BaseElementImage.replace("{{src}}",image);
-                    Imageshtml += "\n" + elementImage;
-                })
-                Imageshtml += "\n</aside>"
-                template = template.replace("{{images}}", Imageshtml)
-                pages['/'] = {"template" : template, "isComplete" : true}
-                pages['/index.html'] = {"template" : template, "isComplete" : true};
-               
+                template = template.replace('{{title}}',text_traduit[url]["header_title"])
+                template = await setup_accueil(template,lang,pages);
             }
+            
             else
             {
-                pages[url] = {"template" : template, "isComplete" : true};
+                pages[url] = {"template" : template, "isComplete" : true,"lang" : lang};
             }
             
         }
         else
         {
             template = Origintemplate;
-            console.log("Already charged")
+            console.log("page :",url, "is already loaded");
         }
         return res.send(template);
 
@@ -64,21 +59,43 @@ const completePage = (app,url) =>
 
 export const setupAppUse = (app) => 
 {
-    app.use('/Css', express.static(path.join(__dirname, 'Css')));
+    //app.use('/Css', express.static(path.join(__dirname, 'Css')));
+    const cssFile = fs.readdirSync(path.join(__dirname,"Css"));
+    console.table(cssFile);
+    cssFile.forEach(file => {
+        if(process.env.ENV === 'development')
+        {
+            app.get(`/Css/${file}`,(req,res) => res.sendFile(path.join(__dirname,"Css",`${file}`)));
+        }
+        else
+        {
+            //ne pas rendre les .map en prod
+            if(file.endsWith(".css"))
+            {
+                app.get(path.join(__dirname,"Css",`${file}`),(req,res) => res.sendFile(path.join(__dirname,"Css",`${file}`)));
+            }
+        }
+       
+    })
+    //ne pas rendre les .scss en prod
+    if(process.env.ENV === 'development')
+    {
+        app.use('/SCSS', express.static(path.join(__dirname, 'SCSS')));
+    }
+    app.use('/partial',express.static(path.join(__dirname, 'partial')));
+    //const partials = fs.readdirSync(path.join(__dirname,"partial"));
+    //console.table(partials);
+    //displayToStatic(app,partials,"partial");
     app.use('/Images', express.static(path.join(__dirname, 'Images')));
     app.use('/Scripts/App', express.static(path.join(__dirname, 'Scripts','App')));
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
     
     const icons = fs.readdirSync(path.join(__dirname,"favicon")).filter(icon => icon.startsWith('favicon'));
     console.table(icons);
-    icons.forEach(icon => {
-        app.get(`/${icon}`,(req,res) => res.sendFile(path.join(__dirname,"favicon",`${icon}`)));
-    })
+    displayToStatic(app,icons,"favicon");
     const publicFiles = fs.readdirSync(path.join(__dirname,'public'));
     console.table(publicFiles);
-    publicFiles.forEach(file => {
-        app.get(`/${file}`,(req,res) => res.sendFile(path.join(__dirname,'public',`${file}`)));
-    })
+    displayToStatic(app,publicFiles,"public");
    
 }
 
