@@ -60,6 +60,7 @@ const completePage = (app,url) =>
         }
         else
         {
+            print("already charged")
             template = Origintemplate;
         }
         return res.send(template);

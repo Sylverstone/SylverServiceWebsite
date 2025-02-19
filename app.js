@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 
 dotenv.config()
 const app = express();
-app.disable('etag');
 
 app.use((req, res, next) => {
     // Autorise le cache MAIS invalide-le quand la langue change

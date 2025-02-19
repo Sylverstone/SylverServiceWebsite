@@ -3,6 +3,7 @@ import { print,showTable } from "./devFonction.js";
 const langue_dispos = ["fr", "en"];
 const extension_interdit = ["png", "jpg", "jpeg", "svg", "ico", "txt", "xml", "js", "css", "map"];
 const back = []
+
 const handleReqWithNoRedirect = (url) => {
     if (!(typeof url === "string")) return false;
     return !(
