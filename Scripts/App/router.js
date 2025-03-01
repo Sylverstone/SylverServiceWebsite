@@ -17,14 +17,12 @@ const element_commun = {
 const completePage = (app,url) =>
 {
     app.get(url, async (req, res) => {
-        
         const lang = req.params.lang;
         print(lang);
         const dataPage = pages[url];
         let Origintemplate = dataPage["template"];
         let template;
         const text_traduit = await getTraduction(lang);
-
         if(dataPage["isComplete"] === false || dataPage["lang"] != lang)
         {
             //origin template est passé au template par défaut, celui-ci n'est jamais changé (il faut mettre en place ce système pour le cas d'un changement de langue)
@@ -44,19 +42,15 @@ const completePage = (app,url) =>
             Object.keys(element_commun).forEach(key => {
                 template = template.replace(key, text_traduit[url][element_commun[key]]);
             })
-
-
             if(url == "/:lang")
             {
                
                 template = await setup_accueil(template,lang,pages);
-            }
-            
+            }            
             else
             {
                 pages[url] = {"template" : template, "isComplete" : true,"lang" : lang};
-            }
-            
+            }            
         }
         else
         {
@@ -92,14 +86,16 @@ export const setupAppUse = (app) =>
         app.use('/SCSS', express.static(path.join(__dirname, 'SCSS')));
     }
     app.use('/partial',express.static(path.join(__dirname, 'partial')));
-    app.use('/Images', express.static(path.join(__dirname, 'Images')));
+    //app.use('/Images', express.static(path.join(__dirname, 'Images')));
     app.use('/Scripts/App', express.static(path.join(__dirname, 'Scripts','App')));
     app.use('/Scripts/Site', express.static(path.join(__dirname, 'Scripts','Site')));
     
     const icons = fs.readdirSync(path.join(__dirname,"favicon")).filter(icon => icon.startsWith('favicon'));
     displayToStatic(app,icons,"favicon");
-    const publicFiles = fs.readdirSync(path.join(__dirname,'public'));
+    const publicFiles = fs.readdirSync(path.join(__dirname,'public'))
     displayToStatic(app,publicFiles,"public");
+
+    
    
 }
 

@@ -15,7 +15,7 @@ const handleReqWithNoRedirect = (url) => {
 
 export const middleware = async(req, res, next) => {
     // Si aucun cookie de langue n'est défini, on l'initialise
-    if(!(extension_interdit.some((ext) => req.url.endsWith(ext))))
+    if(!(extension_interdit.some((ext) => req.url.endsWith(ext))) || req.url.endsWith("txt"))
     {
         print(`request : ${req.url}`)
     }
