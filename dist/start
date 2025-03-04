@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [ -d "dist/" ]; then
+    echo "deleting dist/ directory"
+    rm -r dist/
+    echo "done\n"
+fi
+
+mkdir dist
+
+for dir in */; do
+    if [ "$dir" != "dist/" ]; then
+        echo "copying recursively $dir into dist/$dir"
+        cp -r $dir dist/$dir
+        echo "done\n"
+    fi
+done
+
+for file in `ls -a`; do 
+    if [ -f "$file" ]; then
+        echo "copying $file into dist/"
+        cp $file dist/
+        echo "done\n"
+    fi 
+done
+
+echo "going to dist"
+cd dist
+
+echo "doing change in dist"
+rm -r Scripts
+rm -r public/api
+rm app.ts
+rm dirname.ts
+echo "done\n"
+cd ..
+echo "done\n"
+
+echo "running npm run build"
+npm run build 
+echo "done\n"
+
+echo "going to dist"
+cd dist
+
+echo "running node app.js"
+node app.js
+echo "all done"

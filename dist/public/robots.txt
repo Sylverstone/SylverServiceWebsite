@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /api/
+
+Sitemap: https://sylverservice.up.railway.app/sitemap.xml
