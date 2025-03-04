@@ -17,7 +17,7 @@ for dir in */; do
 done
 
 for file in `ls -a`; do 
-    if [ -f "$file" ]; then
+    if [[ -f "$file" && "$file" != "package.json" ]]; then
         echo "copying $file into dist/"
         cp $file dist/
         echo "done\n"
@@ -26,6 +26,7 @@ done
 
 echo "going to dist"
 cd dist
+mv npackage.json package.json
 
 echo "doing change in dist"
 rm -r Scripts
