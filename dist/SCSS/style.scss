@@ -1,0 +1,86 @@
+
+@use 'variables';
+@use 'body';
+@use 'navHeader';
+@use 'footer';
+@use 'main';
+@use 'mainTechniques';
+
+/*modification des elements par défaut*/
+*
+{
+    margin: 0;
+}
+
+img
+{
+    cursor: pointer;
+}
+
+@include variables.changeLangue();
+
+.full-Body
+{
+ 
+
+    color: white;
+
+    main
+    {
+        height: 100%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 2em !important;
+        filter: drop-shadow(.1em .1em .1em black);
+    }
+    
+    p
+    {
+        font-size: 1em;
+        font-family: variables.$fontTextBase;
+        padding: 1em;
+        background-color: variables.$colorFive;
+        border: .2em solid variables.$colorOne;
+        border-radius: 1em;
+        align-self: center;
+        margin: 1em 1em;
+        white-space: pre-wrap;
+    }
+
+}
+
+.full-html,.full-Body
+{
+    min-height: 98%;
+    height: 98%;
+    overflow-x: hidden;
+}
+
+.visible 
+{
+    opacity: 1;
+}
+
+.hidden 
+{
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
+
+.pConserve
+{
+    white-space: pre-wrap;
+}
+
+@media (max-width: variables.$valeurPxPtitFormat) //mobile
+{
+    p
+    {
+        font-size: .7em !important;
+    }
+
+    h2
+    {
+        font-size: 1em !important;
+    }
+}

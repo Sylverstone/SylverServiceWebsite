@@ -1,0 +1,11 @@
+@use 'variables';
+
+body{
+    @include variables.flexColumn();
+    background: linear-gradient(to right,variables.$colorOne,variables.$colorFour,variables.$colorFive);
+    background-size: 200% 200%;
+    animation: moveBG 10s infinite;
+
+}
+
+@include variables.MoveBG();

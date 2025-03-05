@@ -1,19 +1,28 @@
 {
   "dependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/node": "^22.13.8",
+    "@types/nodemailer": "^6.4.17",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.16",
     "sass": "^1.81.0"
   },
   "type": "module",
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "axios": "^1.7.9",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.2"
   },
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "dev": "npx nodemon app.js",
-    "start": "node ."
+    "dev": "npx nodemon --ext js,html,css .",
+    "build": "npx tsc",
+    "start": "./start"
   }
 }
