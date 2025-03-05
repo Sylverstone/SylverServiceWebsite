@@ -4,12 +4,12 @@
 
    <!-- Accueil -->
    <url>
-      <loc>https://sylverservice.up.railway.app/fr</loc>
+      <loc>https://sylverservice.up.railway.app/fr/</loc>
       <lastmod>2025-01-19</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
-      <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/"/>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/en"/>
    </url>
 
@@ -34,24 +34,24 @@
 
    <!-- Mentions légales -->
    <url>
-      <loc>https://sylverservice.up.railway.app/fr/pages/mentions-legales.html</loc>
+      <loc>https://sylverservice.up.railway.app/fr/pages/mentionLegal.html</loc>
       <lastmod>2025-01-19</lastmod>
       <changefreq>never</changefreq>
       <priority>0.5</priority>
-      <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/pages/mentions-legales.html"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/pages/mentions-legales.html"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/en/pages/mentions-legales.html"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/pages/mentionLegal.html"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/pages/mentionLegal.html"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/en/pages/mentionLegal.html"/>
    </url>
 
    <!-- Techniques -->
    <url>
-      <loc>https://sylverservice.up.railway.app/fr/pages/techniques.html</loc>
+      <loc>https://sylverservice.up.railway.app/fr/pages/Techniques.html</loc>
       <lastmod>2025-01-19</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
-      <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/pages/techniques.html"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/pages/techniques.html"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/fen/pages/techniques.html"/>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/pages/Techniques.html"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/pages/Techniques.html"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/fen/pages/Techniques.html"/>
    </url>
 
 </urlset>
