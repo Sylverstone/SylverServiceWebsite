@@ -97,7 +97,7 @@ const completePage = (app : Application,url : pages_key_t) =>
                 print("already charged")
                 template = Origintemplate;
             }
-            return res.send(template);
+            return res.status(200).send(template);
         }
         catch(err)
         {
