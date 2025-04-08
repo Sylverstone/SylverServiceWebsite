@@ -10,7 +10,7 @@
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/en"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/en/"/>
    </url>
 
    <!-- 404 -->
@@ -51,7 +51,7 @@
       <priority>1.0</priority>
       <xhtml:link rel="alternate" hreflang="fr" href="https://sylverservice.up.railway.app/fr/pages/Techniques.html"/>
       <xhtml:link rel="alternate" hreflang="en" href="https://sylverservice.up.railway.app/en/pages/Techniques.html"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/fen/pages/Techniques.html"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://sylverservice.up.railway.app/en/pages/Techniques.html"/>
    </url>
 
 </urlset>
