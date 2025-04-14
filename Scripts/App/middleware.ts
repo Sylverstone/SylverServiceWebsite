@@ -6,6 +6,7 @@ import { print } from "./devFonction.js";
 
 const langue_dispos = ["fr", "en"];
 const extension_interdit = ["png", "jpg", "jpeg", "svg", "ico", "txt", "xml", "js", "css", "map"];
+const dirInterdit = ["/api/","/404/"]
 const fichierInterdit = fs.readdirSync(path.join(__dirname,"public")).filter(file => file.endsWith("html"));
 const back : string[] = []
 
@@ -15,7 +16,7 @@ const handleReqWithNoRedirect = (url : string) => {
     return !(
         langue_dispos.some((langue_dispo) => url.startsWith(`/${langue_dispo}/`) || url.startsWith(`${langue_dispo}/`) || url === `${langue_dispo}` || url.endsWith(`/${langue_dispo}`)) || 
         extension_interdit.some((ext) => url.endsWith(ext))
-        || url.startsWith("/api/") || fichierInterdit.some((file) => url.endsWith(file))
+        || dirInterdit.some(file => url.startsWith(file)) || fichierInterdit.some((file) => url.endsWith(file))
     );
 };
 

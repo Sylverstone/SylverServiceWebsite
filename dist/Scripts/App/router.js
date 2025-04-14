@@ -118,8 +118,9 @@ export const setupAppUse = (app) => {
 };
 export const handle404 = (app) => {
     app.use((req, res) => {
-        console.log(`404: ${req.path}`);
-        return res.status(404).sendFile(path.join(__dirname, '404', '404.html'));
+        if (req.url == "/404/GingFreecs")
+            return res.status(404).sendFile(path.join(__dirname, '404', '404.html'));
+        return res.redirect(301, "/404/GingFreecs");
     });
 };
 export const setupSitePageAvailable = (app) => {
