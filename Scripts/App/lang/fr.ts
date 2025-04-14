@@ -29,7 +29,7 @@ Ici vous trouverez un aperçu de l'application SylverService, je vous laisse en 
         "page_title" : "Sylver Service"
     },
 
-    "/:lang/pages/Techniques.html" : {
+    "/:lang/pages/Techniques" : {
         "texte_i" : 
     [
 `
@@ -72,7 +72,7 @@ L'application Sylverservice est disponible sur son <a href = "https://github.com
         "page_title" : "Aspects techniques SylverService"
     },
 
-    "/:lang/pages/mentionLegal.html" : {
+    "/:lang/pages/mentionLegal" : {
         "texte_i" :
     [
 `
@@ -108,7 +108,7 @@ Pour toute question relative au site ou à l’application SylverService, veuill
         "page_title" : "mention legal"
     },
     
-    "/:lang/pages/form.html":
+    "/:lang/pages/form":
     {
         "texte_i" : [""],
         "header_title" : "Collaborons ensemble",

@@ -1,15 +1,33 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 if [ -d "dist/" ]; then
-    echo "deleting dist/ directory"
-    rm -r dist/
-    echo "done\n"
+    
+    ##echo "deleting dist/ directory"
+    ##rm -r dist/
+    ##echo "done\n"
+    echo "going to dist/"
+    cd dist/
+    for dir in */; do
+        if [ "$dir" != "node_modules/" ]; then
+            echo "deleting $dir"
+            rm -r $dir
+        fi
+    done
+    for file in *; do
+        
+        if [[ -f "$file" ]]; then
+            echo "deleting $file"
+            rm $file
+        fi
+    done
+    echo "going back .."
+    cd ..    
+    echo ""
 fi
 
-mkdir dist
 
 for dir in */; do
-    if [ "$dir" != "dist/" ]; then
+    if [ "$dir" != "dist/" ] && [ "$dir" != "node_modules/" ]; then
         echo "copying recursively $dir into dist/$dir"
         cp -r $dir dist/$dir
         echo "done\n"
@@ -44,6 +62,9 @@ echo "done\n"
 echo "going to dist"
 cd dist
 
+rm "tsconfig.json"
+
 echo "running node app.js"
 node app.js
+
 echo "all done"

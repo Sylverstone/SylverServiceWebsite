@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { footer, header, originTemplatePage, pageToTextId, pages, changeLangue } from './pagesHtml.js';
+import { footer, header, originTemplatePage, pageToTextId, pages, changeLangue, is_page_link_t } from './pagesHtml.js';
 import express from 'express';
 import fs from 'fs';
 import __dirname from '../../dirname.js';
@@ -17,7 +17,9 @@ import { displayToStatic } from './displayToStatic.js';
 import { print } from './devFonction.js';
 import dotenv from "dotenv";
 import setup_accueil from './pages/index.html.js';
+import { LANGS } from './lang/type.js';
 dotenv.config({ path: "/.env" });
+//Contient les textes a remplacer commun a toute les pages. 
 const element_commun = {
     "{{title}}": "header_title",
     "{{page_title}}": "page_title",
@@ -25,18 +27,16 @@ const element_commun = {
 const is_key_of_element_commun = (key) => {
     return ["{{title}}", "{{page_title}}"].includes(key);
 };
-export const is_pages_key_t = (key) => {
-    return ["/:lang", "/:lang/pages/form.html", "/:lang/pages/Techniques.html", "/:lang/pages/mentionLegal.html"].includes(key);
-};
 export const is_text_t_value_t = (key) => {
     return ["header_title", "page_title"].includes(key);
 };
 export const is_lang_t = (lang) => {
-    return lang === "en" || lang === "fr";
+    return LANGS.includes(lang);
 };
 const completePage = (app, url) => {
-    if (!is_pages_key_t(url))
+    if (!is_page_link_t(url))
         return;
+    print(url);
     app.get(url, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const lang = req.params.lang;
@@ -82,7 +82,7 @@ const completePage = (app, url) => {
                 print("already charged");
                 template = Origintemplate;
             }
-            return res.send(template);
+            return res.status(200).send(template);
         }
         catch (err) {
             console.error("Erreur lors de la chargement de la page : " + err);
@@ -124,7 +124,7 @@ export const handle404 = (app) => {
 };
 export const setupSitePageAvailable = (app) => {
     Object.keys(pages).forEach(url => {
-        if (!is_pages_key_t(url))
+        if (!is_page_link_t(url))
             return;
         completePage(app, url);
     });

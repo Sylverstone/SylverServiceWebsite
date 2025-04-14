@@ -1,5 +1,5 @@
-import {footer, header, originTemplatePage, pageToTextId, pages,changeLangue} from './pagesHtml.js';
-import express, {application, Application, Express, Request, Response} from 'express';
+import {footer, header, originTemplatePage, pageToTextId, pages,changeLangue, page_link_t, is_page_link_t} from './pagesHtml.js';
+import express, {Application,Request, Response} from 'express';
 import fs from 'fs';
 import __dirname from '../../dirname.js';
 import path from 'path'
@@ -10,8 +10,11 @@ import { lang_t } from './getText.js';
 
 import dotenv from "dotenv"
 import setup_accueil from './pages/index.html.js';
+import { LANGS } from './lang/type.js';
+
 dotenv.config({path : "/.env"})
 
+//Contient les textes a remplacer commun a toute les pages. 
 const element_commun = {
     "{{title}}" : "header_title",
     "{{page_title}}" : "page_title",
@@ -19,20 +22,11 @@ const element_commun = {
 
 type key_of_element_commun = | "{{title}}" | "{{page_title}}"
 
-export type pages_key_t = '/:lang' | '/:lang/pages/form.html' | '/:lang/pages/Techniques.html' 
-    | "/:lang/pages/mentionLegal.html";
-
 export type key_text_t_value_t = "header_title" | "page_title" 
-
 
 const is_key_of_element_commun = (key : string) : key is key_of_element_commun =>
 {
     return ["{{title}}", "{{page_title}}"].includes(key);
-}
-
-export const is_pages_key_t = (key : string) : key is pages_key_t => 
-{
-    return ["/:lang", "/:lang/pages/form.html", "/:lang/pages/Techniques.html", "/:lang/pages/mentionLegal.html"].includes(key);
 }
 
 export const is_text_t_value_t = (key : string) : key is key_text_t_value_t =>
@@ -41,13 +35,13 @@ export const is_text_t_value_t = (key : string) : key is key_text_t_value_t =>
 }
 
 export const is_lang_t = (lang : string) : lang is lang_t => {
-    return lang === "en" || lang === "fr";
+    return (LANGS as readonly string[]).includes(lang);
 }
 
-
-const completePage = (app : Application,url : pages_key_t) =>
+const completePage = (app : Application,url : page_link_t) =>
 {
-    if(!is_pages_key_t(url))return;
+    if(!is_page_link_t(url))return;
+    print(url);
     app.get(url, async (req : Request,res : Response) : Promise<any> => {
         try{
             const lang = req.params.lang;
@@ -80,6 +74,7 @@ const completePage = (app : Application,url : pages_key_t) =>
                     if(!is_text_t_value_t(element_commun[key])) return;
                     template = template.replace(key, text_traduit[url][element_commun[key]]);
                 })
+
                 if(url == "/:lang")
                 {               
                     template = await setup_accueil(template,lang,pages);
@@ -105,7 +100,6 @@ const completePage = (app : Application,url : pages_key_t) =>
             return res.status(500).json({error : "Erreur d'execution " + err})
         }
         
-
     });
 }
 
@@ -157,7 +151,7 @@ export const handle404 = (app : Application) =>
 export const setupSitePageAvailable = (app : Application) =>
 {
     Object.keys(pages).forEach(url => {
-        if(!is_pages_key_t(url)) return;
+        if(!is_page_link_t(url)) return;
         completePage(app,url)
     }
         

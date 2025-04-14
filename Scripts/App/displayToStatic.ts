@@ -1,7 +1,7 @@
 import path from "path";
 import __dirname from "../../dirname.js";
 import fs from "fs"
-import express, {Application} from "express";
+import {Application} from "express";
 export const displayToStatic = (app : Application,list : string[],folderName : string,comp = "") => 
 {
     list.forEach(elt => {

@@ -4,7 +4,9 @@ import path from 'path';
 import __dirname from '../../dirname.js';
 import { lang_t } from './getText.js';
 
-const loadTemplate = (filePath : string) => {
+
+//lit le fichier filePath
+const loadTemplate = (filePath : string) => { 
     return fs.readFileSync(path.join(__dirname,filePath), 'utf-8');
 };
 
@@ -13,12 +15,30 @@ const Technique = loadTemplate(path.join("pages","Techniques.html"));
 const form = loadTemplate(path.join("pages","form.html"));
 const legalMention = loadTemplate(path.join("pages","mentionLegal.html"));
 
-const originTemplatePage =  {
+export const PAGE_LINKS = 
+[
+    '/:lang',
+    '/:lang/pages/form',
+    '/:lang/pages/Techniques',
+    '/:lang/pages/mentionLegal',
+
+] as const;
+// as const permet de transformer le type de string[] en "/:lang" | "/:lang/pages/form" ....
+
+export type page_link_t = typeof PAGE_LINKS[number];
+
+export const is_page_link_t = (key : string) : key is page_link_t => 
+{
+    //as readonly string[] transforme le tableau en simple tableau de string, et pas tableau de string précise
+    return (PAGE_LINKS as readonly string[]).includes(key);
+}
+
+const originTemplatePage : Record<page_link_t,any> =  {
 
     '/:lang' : {"template" : index, "isComplete" : false,"lang" : "fr"},
-    '/:lang/pages/form.html' : {"template" : form, "isComplete" : false,"lang" : "fr"},
-    '/:lang/pages/Techniques.html' : {"template" : Technique, "isComplete" : false,"lang" : "fr"},
-    '/:lang/pages/mentionLegal.html' : {"template" : legalMention, "isComplete" : false,"lang" : "fr"}
+    '/:lang/pages/form' : {"template" : form, "isComplete" : false,"lang" : "fr"},
+    '/:lang/pages/Techniques' : {"template" : Technique, "isComplete" : false,"lang" : "fr"},
+    '/:lang/pages/mentionLegal' : {"template" : legalMention, "isComplete" : false,"lang" : "fr"}
 }
 
 export interface data_page_t
@@ -28,28 +48,22 @@ export interface data_page_t
     "lang" : lang_t,
     "originTemplate" : string
 }
-export interface page_t 
-{
-    '/:lang' : data_page_t;
-    '/:lang/pages/form.html' : data_page_t;
-    "/:lang/pages/Techniques.html" : data_page_t;
-    "/:lang/pages/mentionLegal.html" : data_page_t;
-}
+export type page_t = Record<page_link_t,data_page_t>
 
 let pages : page_t =
 {
     '/:lang' : {"template" : index, "isComplete" : false,"lang" : "fr","originTemplate" : index},
-    '/:lang/pages/form.html' : {"template" : form, "isComplete" : false,"lang" : "fr","originTemplate" : form},
-    '/:lang/pages/Techniques.html' : {"template" : Technique, "isComplete" : false,"lang" : "fr","originTemplate" : Technique},
-    '/:lang/pages/mentionLegal.html' : {"template" : legalMention, "isComplete" : false,"lang" : "fr","originTemplate" : legalMention}
+    '/:lang/pages/form' : {"template" : form, "isComplete" : false,"lang" : "fr","originTemplate" : form},
+    '/:lang/pages/Techniques' : {"template" : Technique, "isComplete" : false,"lang" : "fr","originTemplate" : Technique},
+    '/:lang/pages/mentionLegal' : {"template" : legalMention, "isComplete" : false,"lang" : "fr","originTemplate" : legalMention}
 }
 
-const pageToTextId = 
+const pageToTextId : Record<page_link_t, {"nombreText" : number} | undefined> = 
 {
     "/:lang" : {"nombreText" : 3},
-    '/:lang/pages/form.html' : undefined,
-    "/:lang/pages/Techniques.html" : {"nombreText" : 1},
-    "/:lang/pages/mentionLegal.html" : {"nombreText" : 1}
+    '/:lang/pages/form' : undefined,
+    "/:lang/pages/Techniques" : {"nombreText" : 1},
+    "/:lang/pages/mentionLegal" : {"nombreText" : 1}
 }
 
 const header = loadTemplate(path.join("partial","header.html"));

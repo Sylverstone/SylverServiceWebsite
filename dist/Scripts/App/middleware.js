@@ -7,15 +7,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import * as fs from "fs";
+import __dirname from "../../dirname.js";
+import * as path from "path";
+import { print } from "./devFonction.js";
 const langue_dispos = ["fr", "en"];
 const extension_interdit = ["png", "jpg", "jpeg", "svg", "ico", "txt", "xml", "js", "css", "map"];
+const fichierInterdit = fs.readdirSync(path.join(__dirname, "public")).filter(file => file.endsWith("html"));
 const back = [];
 const handleReqWithNoRedirect = (url) => {
     if (!(typeof url === "string"))
         return false;
-    return !(langue_dispos.some((langue_dispo) => url.startsWith(`/${langue_dispo}/`) || url.startsWith(`${langue_dispo}/`) || url === `${langue_dispo}`) ||
+    console.log("url : " + url);
+    return !(langue_dispos.some((langue_dispo) => url.startsWith(`/${langue_dispo}/`) || url.startsWith(`${langue_dispo}/`) || url === `${langue_dispo}` || url.endsWith(`/${langue_dispo}`)) ||
         extension_interdit.some((ext) => url.endsWith(ext))
-        || url.startsWith("/api/"));
+        || url.startsWith("/api/") || fichierInterdit.some((file) => url.endsWith(file)));
 };
 export const middleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     // Si aucun cookie de langue n'est défini, on l'initialise
@@ -58,6 +64,7 @@ export const middleware = (req, res, next) => __awaiter(void 0, void 0, void 0, 
         return next(); // Continue l'exécution sans redirection
     }
     else {
+        print("Renaming url");
         if (lang === undefined) {
             lang = req.acceptsLanguages(langue_dispos) || defaultValue;
         }
@@ -67,7 +74,7 @@ export const middleware = (req, res, next) => __awaiter(void 0, void 0, void 0, 
         print(`base url : ${req.url}`);
         print(`new request : ${newReq}`);
         */
-        if (newReq.endsWith("/") && newReq !== `/${lang}/`) {
+        if (newReq.endsWith("/")) {
             newReq = newReq.slice(0, -1);
         }
         return res.redirect(301, newReq);

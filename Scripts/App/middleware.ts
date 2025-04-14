@@ -1,15 +1,21 @@
-import { print,showTable } from "./devFonction.js";
-import express, {Application,Request,NextFunction,Response} from "express";
+import {Request,NextFunction,Response} from "express";
+import * as fs from "fs"
+import __dirname from "../../dirname.js"
+import * as path from "path"
+import { print } from "./devFonction.js";
+
 const langue_dispos = ["fr", "en"];
 const extension_interdit = ["png", "jpg", "jpeg", "svg", "ico", "txt", "xml", "js", "css", "map"];
+const fichierInterdit = fs.readdirSync(path.join(__dirname,"public")).filter(file => file.endsWith("html"));
 const back : string[] = []
 
 const handleReqWithNoRedirect = (url : string) => {
     if (!(typeof url === "string")) return false;
+    console.log("url : " + url)
     return !(
-        langue_dispos.some((langue_dispo) => url.startsWith(`/${langue_dispo}/`) || url.startsWith(`${langue_dispo}/`) || url === `${langue_dispo}`) ||
+        langue_dispos.some((langue_dispo) => url.startsWith(`/${langue_dispo}/`) || url.startsWith(`${langue_dispo}/`) || url === `${langue_dispo}` || url.endsWith(`/${langue_dispo}`)) || 
         extension_interdit.some((ext) => url.endsWith(ext))
-        || url.startsWith("/api/")
+        || url.startsWith("/api/") || fichierInterdit.some((file) => url.endsWith(file))
     );
 };
 
@@ -59,7 +65,10 @@ export const middleware = async(req : Request, res : Response, next : NextFuncti
             
         }
         return next(); // Continue l'exécution sans redirection
+
     } else {
+
+        print("Renaming url");
         if(lang === undefined)
         {
             lang = req.acceptsLanguages(langue_dispos) || defaultValue;
@@ -70,7 +79,7 @@ export const middleware = async(req : Request, res : Response, next : NextFuncti
         print(`base url : ${req.url}`);
         print(`new request : ${newReq}`);
         */
-        if (newReq.endsWith("/") && newReq !== `/${lang}/`) {
+        if (newReq.endsWith("/")) {
             newReq = newReq.slice(0, -1);
         }
 

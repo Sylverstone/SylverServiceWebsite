@@ -19,9 +19,6 @@ app.use(middleware);
 setupAppUse(app);
 setupSitePageAvailable(app);
 load_api(app).then(() => {
-    app.get("/api/n", (req, res) => {
-        return res.json({ what: "the fuck" });
-    });
     handle404(app);
     app.listen(3000, () => {
         console.log('Server running on port 3000');

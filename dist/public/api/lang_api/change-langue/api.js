@@ -13,7 +13,7 @@ export const get = (req, res) => {
         return res.redirect(301, "/404/404.html");
     let listCible = referrer.split("/").slice(3);
     listCible[0] = req.params.lang;
-    const final_req = listToString(listCible);
+    const final_req = listToString(listCible).slice(0, -1);
     print(`finalList : ${final_req}`);
     return res.redirect(301, `/${final_req}`);
 };

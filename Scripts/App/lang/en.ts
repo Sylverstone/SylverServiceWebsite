@@ -1,19 +1,15 @@
+import { page_link_t } from "../pagesHtml";
+
 export interface text_t_value_t
 {
-    "texte_i" : string[] | undefined;
+    "texte_i" : string[];
     "header_title" : string;
     "page_title" : string;
 }
 
-export interface text_t 
-{
-    "/:lang" : text_t_value_t;
-    "/:lang/pages/Techniques.html" : text_t_value_t;
-    "/:lang/pages/form.html" : text_t_value_t;
-    "/:lang/pages/mentionLegal.html" : text_t_value_t;
-}
+export type text_t = Record<page_link_t,text_t_value_t>
 
-let texts = {
+let texts : text_t = {
     "/:lang" : {
         "texte_i" : [
 `
@@ -43,7 +39,7 @@ Ici vous trouverez un aperçu de l'application SylverService, je vous laisse en 
     "page_title" : "Sylver Service"
     },
 
-    "/:lang/pages/Techniques.html" :{
+    "/:lang/pages/Techniques" :{
         "texte_i" : 
     [
 `
@@ -85,7 +81,7 @@ L'application Sylverservice est disponible sur son <a href = "https://github.com
         "header_title" : "How Sylver Service was coded ?",
         "page_title" : "Technical aspects of Sylver Service"
     },
-    "/:lang/pages/mentionLegal.html" : {
+    "/:lang/pages/mentionLegal" : {
         "texte_i" :
     [
 `
@@ -120,7 +116,7 @@ Pour toute question relative au site ou à l’application SylverService, veuill
     "header_title" : "Legal Mention",
     "page_title" : "legal mention"
     },
-    "/:lang/pages/form.html":
+    "/:lang/pages/form":
     {
         "texte_i" : [""],
         "header_title" : "Let's work together",

@@ -25,7 +25,7 @@ Ici vous trouverez un aperçu de l'application SylverService, je vous laisse en 
         "header_title": "Sylver Service : Vos élèves n'auront jamais été aussi soudés",
         "page_title": "Sylver Service"
     },
-    "/:lang/pages/Techniques.html": {
+    "/:lang/pages/Techniques": {
         "texte_i": [
             `
 <p>
@@ -66,7 +66,7 @@ L'application Sylverservice est disponible sur son <a href = "https://github.com
         "header_title": "Comment Sylver Service à été codé",
         "page_title": "Aspects techniques SylverService"
     },
-    "/:lang/pages/mentionLegal.html": {
+    "/:lang/pages/mentionLegal": {
         "texte_i": [
             `
 <strong>Propriétaire</strong> du site :
@@ -100,7 +100,7 @@ Pour toute question relative au site ou à l’application SylverService, veuill
         "header_title": "Mentions légales",
         "page_title": "mention legal"
     },
-    "/:lang/pages/form.html": {
+    "/:lang/pages/form": {
         "texte_i": [""],
         "header_title": "Collaborons ensemble",
         "page_title": "Formulaire de contact"
