@@ -5,7 +5,7 @@ import path from "path";
 import "dotenv/config"
 
 const zoneRecherche = [__dirname,path.join(__dirname,"pages")]
-const relatifZone = ["/", "/pages/"]
+const relatifZone = ["", "/pages/"]
 const langs = ["fr", "en"]
 const pageRestreinte = ["googleec111dafdd73fd90.html",]
 
@@ -17,7 +17,7 @@ function indexNow()
         files = files.filter((file) => path.extname(file) == ".html" && !pageRestreinte.includes(file) ).map((file) => {
             if(file === "index.html")
                 return "";
-            return file;
+            return file.slice(0,-5);
         })
         
         let filteredFile = [];
@@ -29,7 +29,6 @@ function indexNow()
         urlList.push(...filteredFile)
     })
     console.log(urlList);
-
     const data = {
         host: "sylverservice.up.railway.app",
         key: process.env.indexNowKey,
